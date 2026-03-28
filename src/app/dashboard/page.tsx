@@ -155,7 +155,7 @@ const MOODS = [
 
 function moodMessage(score: number): string {
     if (score <= 2) return "We've got you. Most headlines won't affect you — check your feed for what actually matters.";
-    if (score === 3) return "Stay informed, stay grounded. Here's a summary of what matters to you.";
+    if (score === 3) return "Stay informed, stay grounded. Keep checking news for what matters to you.";
     return "Great headspace! Here's your daily immigration summary.";
 }
 
@@ -252,7 +252,7 @@ export default function DashboardPage() {
     const [moodSelected, setMoodSelected] = useState<number | null>(profile.mood);
     const [moodSubmitted, setMoodSubmitted] = useState(!!profile.mood);
     // Derived from persisted profile.mood — survives page navigation
-    const showMentorCard = (profile.mood ?? 5) <= 2;
+    const showAdditionalCard = (profile.mood ?? 5) <= 3;
 
     // F1 timeline inputs
     const [f1GradStatus, setF1GradStatus] = useState<"graduated" | "not_graduated" | null>(
@@ -285,7 +285,7 @@ export default function DashboardPage() {
     const nextUpcoming = timeline.find((e) => daysUntil(e.date) >= 0);
 
     // State-specific note
-    const stateNote = profile.state === "CA"
+    const stateNote = profile.state === "California"
         ? "California has enacted additional state-level protections for immigrant workers — your rights are extra-protected here."
         : null;
 
@@ -414,15 +414,25 @@ export default function DashboardPage() {
                     </div>
                 )}
 
-                {/* Peer/mentor CTA — shown when mood is anxious or worried, persists across navigation */}
-                {showMentorCard && (
+                {/* Peer/mentor CTA — shown when mood is anxious or worried */}
+                {/* Reddit communities — shown when mood is neutral or anxious or worried */}
+                {showAdditionalCard && (
                     <div className="mt-3 bg-purple-50 border border-purple-200 rounded-xl p-4">
-                        <p className="text-sm font-medium text-purple-800 mb-1">
-                            Would you like to talk with someone?
-                        </p>
-                        <p className="text-xs text-purple-600 mb-3">
-                            Connecting with a peer who's navigated the same visa journey can really help. These communities are active and welcoming.
-                        </p>
+                        {(profile.mood ?? 5) == 3 &&
+                            <p className="text-sm font-medium text-purple-800 mb-1">
+                                You're not alone in this journey. Join these communities to stay upto date with the latest updates and connect with peers who've navigated the same visa journey.
+                            </p>
+                        }
+                        {(profile.mood ?? 5) <= 2 && (
+                            <p className="text-sm font-medium text-purple-800 mb-1">
+                                Would you like to talk with someone?
+                            </p>
+                        )}
+                        {(profile.mood ?? 5) <= 2 && (
+                            <p className="text-xs text-purple-600 mb-3">
+                                Connecting with a peer who's navigated the same visa journey can really help. These communities are active and welcoming.
+                            </p>
+                        )}
                         <div className="flex gap-2">
                             <a
                                 href={profile.visaType === "H1B"
@@ -430,7 +440,7 @@ export default function DashboardPage() {
                                     : "https://www.reddit.com/r/f1visa"}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex-1 text-center text-xs py-2 px-3 bg-purple-600 text-white rounded-lg hover:bg-purple-500 transition-colors"
+                                className="flex-1 text-center text-xs py-2 px-3 bg-purple-700 text-white rounded-lg hover:bg-purple-500 transition-colors"
                             >
                                 {profile.visaType === "H1B" ? "r/H1B community →" : "r/F1visa community →"}
                             </a>
@@ -438,18 +448,32 @@ export default function DashboardPage() {
                                 href="https://www.reddit.com/r/immigration"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex-1 text-center text-xs py-2 px-3 bg-white text-purple-700 border border-purple-300 rounded-lg hover:bg-purple-50 transition-colors"
+                                className="flex-1 text-center text-xs py-2 px-0 bg-purple-700 text-white border border-purple-300 rounded-lg hover:bg-purple-50 transition-colors"
                             >
                                 r/Immigration →
                             </a>
-                            <a
-                                href="https://www.mentorcruise.com/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex-1 text-center text-xs py-2 px-3 bg-white text-purple-700 border border-purple-300 rounded-lg hover:bg-purple-50 transition-colors"
-                            >
-                                Find a mentor →
-                            </a>
+                            {(profile.mood ?? 5) <= 2 && (
+                                <a
+                                    href="https://www.mentorcruise.com/filter/immigration/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 text-center text-xs py-2 px-3 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors"
+                                >
+                                    Find an immigration mentor →
+                                </a>
+                            )}
+                            {(profile.mood ?? 5) <= 1 && (
+                                <a
+                                    href={profile.state
+                                        ? `https://www.bestlawyers.com/united-states/${profile.state.toLowerCase().replace(" ", "-")}`
+                                        : "https://www.bestlawyers.com/united-states/"}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 text-center text-xs py-2 px-3 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors"
+                                >
+                                    Find an immigration lawyer in {profile.state ? profile.state : "US"} →
+                                </a>
+                            )}
                         </div>
                         <p className="text-xs text-purple-400 mt-2 text-center">
                             Select a calmer mood above to dismiss
