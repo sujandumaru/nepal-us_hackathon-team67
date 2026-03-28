@@ -20,26 +20,26 @@ export default function OnboardingPage() {
 
     const handleContinue = () => {
         if (!visaType || !state) return;
-        setProfile({ visaType, state, mood: null });
-        router.push("/feed");
+        setProfile({ visaType, state, mood: null, gradDate: null, optEndDate: null });
+        router.push("/dashboard"); // ← goes to dashboard, not /feed
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center px-6">
+        <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-gray-50">
             <div className="max-w-md w-full space-y-8">
 
                 {/* Header */}
                 <div className="text-center space-y-2">
-                    <h1 className="text-4xl font-bold text-black">ImmiCalm 🕊️</h1>
-                    <p className="text-gray-400 text-lg">
+                    <h1 className="text-4xl font-bold text-gray-900">ImmiCalm 🕊️</h1>
+                    <p className="text-gray-500 text-lg">
                         Verified immigration updates. No noise. No panic.
                     </p>
                 </div>
 
                 {/* Visa Type */}
                 <div className="space-y-3">
-                    <label className="text-sm font-medium text-gray-300 uppercase tracking-wider">
-                        Your Visa Type
+                    <label className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                        Your visa type
                     </label>
                     <div className="grid grid-cols-2 gap-3">
                         {(["F1", "H1B"] as const).map((type) => (
@@ -47,13 +47,13 @@ export default function OnboardingPage() {
                                 key={type}
                                 onClick={() => setVisaType(type)}
                                 className={`py-4 rounded-xl font-semibold text-lg transition-all border-2 ${visaType === type
-                                    ? "border-blue-500 bg-blue-500/20 text-blue-300"
-                                    : "border-gray-700 bg-gray-900 text-gray-400 hover:border-gray-500"
+                                        ? "border-blue-500 bg-blue-50 text-blue-700"
+                                        : "border-gray-200 bg-white text-gray-500 hover:border-gray-300"
                                     }`}
                             >
                                 {type}
-                                <p className="text-xs font-normal mt-1 text-gray-500">
-                                    {type === "F1" ? "Student Visa" : "Work Visa"}
+                                <p className="text-xs font-normal mt-1 text-gray-400">
+                                    {type === "F1" ? "Student visa" : "Work visa"}
                                 </p>
                             </button>
                         ))}
@@ -62,13 +62,13 @@ export default function OnboardingPage() {
 
                 {/* State */}
                 <div className="space-y-3">
-                    <label className="text-sm font-medium text-gray-300 uppercase tracking-wider">
-                        State of Residence
+                    <label className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                        State of residence
                     </label>
                     <select
                         value={state}
                         onChange={(e) => setState(e.target.value)}
-                        className="w-full bg-gray-900 border-2 border-gray-700 rounded-xl px-4 py-3 text-white focus:border-blue-500 focus:outline-none"
+                        className="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:border-blue-400 focus:outline-none"
                     >
                         <option value="">Select your state</option>
                         {US_STATES.map((s) => (
@@ -78,7 +78,7 @@ export default function OnboardingPage() {
                 </div>
 
                 {/* Privacy Note */}
-                <p className="text-xs text-gray-500 text-center">
+                <p className="text-xs text-gray-400 text-center">
                     🔒 We never store personal data. This is used only to filter relevant updates for you.
                 </p>
 
@@ -86,9 +86,9 @@ export default function OnboardingPage() {
                 <button
                     onClick={handleContinue}
                     disabled={!visaType || !state}
-                    className="w-full py-4 rounded-xl font-semibold text-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                    className="w-full py-4 rounded-xl font-semibold text-lg bg-blue-600 hover:bg-blue-500 text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                 >
-                    Show My Updates →
+                    Show my updates →
                 </button>
 
             </div>

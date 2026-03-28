@@ -247,29 +247,28 @@ export default function DashboardPage() {
             </div>
 
             {/* ── Stats row ─────────────────────────────────────────────────── */}
-            <div className="grid grid-cols-3 gap-3">
-                {[
-                    {
-                        label: "Active alerts",
-                        value: redCount === 0 ? "None" : String(redCount),
-                        valueClass: redCount > 0 ? "text-red-600" : "text-green-700",
-                    },
-                    {
-                        label: "Next deadline",
-                        value: nextDeadlineDays !== null ? `${nextDeadlineDays}d` : "—",
-                        valueClass: nextDeadlineDays !== null && nextDeadlineDays < 30 ? "text-red-600" : "text-gray-900",
-                    },
-                    {
-                        label: "Visa status",
-                        value: "Active",
-                        valueClass: "text-green-700",
-                    },
-                ].map((s) => (
-                    <div key={s.label} className="bg-white rounded-xl border border-gray-200 px-4 py-3">
-                        <p className="text-xs text-gray-500 mb-1">{s.label}</p>
-                        <p className={`text-2xl font-semibold ${s.valueClass}`}>{s.value}</p>
+            <div className={`grid gap-3 ${profile.visaType === "F1" ? "grid-cols-3" : "grid-cols-2"}`}>
+                <div className="bg-white rounded-xl border border-gray-200 px-4 py-3">
+                    <p className="text-xs text-gray-500 mb-1">Active alerts</p>
+                    <p className={`text-2xl font-semibold ${redCount > 0 ? "text-red-600" : "text-green-700"}`}>
+                        {redCount === 0 ? "None" : String(redCount)}
+                    </p>
+                </div>
+
+                {/* Only show deadline tracker for F1 — H1B doesn't have OPT/STEM deadlines */}
+                {profile.visaType === "F1" && (
+                    <div className="bg-white rounded-xl border border-gray-200 px-4 py-3">
+                        <p className="text-xs text-gray-500 mb-1">Next deadline</p>
+                        <p className={`text-2xl font-semibold ${nextDeadlineDays !== null && nextDeadlineDays < 30 ? "text-red-600" : "text-gray-900"}`}>
+                            {nextDeadlineDays !== null ? `${nextDeadlineDays}d` : "—"}
+                        </p>
                     </div>
-                ))}
+                )}
+
+                <div className="bg-white rounded-xl border border-gray-200 px-4 py-3">
+                    <p className="text-xs text-gray-500 mb-1">Visa status</p>
+                    <p className="text-2xl font-semibold text-green-700">Active</p>
+                </div>
             </div>
 
             {/* ── Mood check-in ─────────────────────────────────────────────── */}
