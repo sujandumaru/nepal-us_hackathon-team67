@@ -4,7 +4,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/lib/userContext";
 import MythCard from "@/components/news/MythCard";
-import mythsData from "@/data/myths.json";
+import rawMythsData from "@/data/myths.json";
+import type { Myth } from "@/components/news/MythCard";
+
+const mythsData = rawMythsData as Myth[];
 
 type FilterType = "all" | "F1" | "H1B" | "false" | "misleading";
 
@@ -81,8 +84,8 @@ export default function MythBusterPage() {
                         key={f.value}
                         onClick={() => setFilter(f.value)}
                         className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === f.value
-                                ? "bg-purple-600 text-white"
-                                : "bg-white text-gray-500 border border-gray-200 hover:bg-gray-50"
+                            ? "bg-purple-600 text-white"
+                            : "bg-white text-gray-500 border border-gray-200 hover:bg-gray-50"
                             }`}
                     >
                         {f.label}

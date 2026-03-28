@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-type Myth = {
+export type Myth = {
     id: string;
     claim: string;
     verdict: "false" | "misleading" | "true";
