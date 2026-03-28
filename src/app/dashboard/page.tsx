@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/lib/userContext";
-import newsData from "@/data/news.json";
 import { NewsItem } from "@/components/news/NewsCard";
+import curatedNews from "@/data/news.json";
 
 // ─── Timeline calculation ─────────────────────────────────────────────────────
 
@@ -179,11 +179,21 @@ export default function DashboardPage() {
     const [gradInput, setGradInput] = useState(profile.gradDate ?? "");
     const [moodSelected, setMoodSelected] = useState<number | null>(profile.mood);
     const [moodSubmitted, setMoodSubmitted] = useState(!!profile.mood);
+    const [newsArticles, setNewsArticles] = useState<NewsItem[]>(curatedNews as NewsItem[]);
+
+    // Fetch live news for the dashboard summary
+    useEffect(() => {
+        if (!profile.visaType) return;
+        fetch("/api/news")
+            .then((r) => r.json())
+            .then((d) => { if (d.articles?.length) setNewsArticles(d.articles); })
+            .catch(() => { }); // silently keep curated fallback on error
+    }, [profile.visaType]);
 
     if (!profile.visaType) return null;
 
     // ── Data ────────────────────────────────────────────────────────────────────
-    const relevantNews = (newsData as NewsItem[]).filter((n) =>
+    const relevantNews = newsArticles.filter((n) =>
         n.affectedVisas.includes(profile.visaType!)
     );
     const redCount = relevantNews.filter((n) => n.severity === "red").length;

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const MOCK_MODE = !process.env.ANTHROPIC_API_KEY;
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const MOCK_MODE = !OPENROUTER_API_KEY;
+const MODEL = "google/gemini-2.0-flash-exp:free";
 
 export async function POST(req: NextRequest) {
     const { messages, newsContext, userProfile } = await req.json();
@@ -37,30 +39,33 @@ STRICT RULES:
 5. Always end with a reassurance if the user seems anxious`;
 
     try {
-        const response = await fetch("https://api.anthropic.com/v1/messages", {
+        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "x-api-key": process.env.ANTHROPIC_API_KEY!,
-                "anthropic-version": "2023-06-01",
+                "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+                "HTTP-Referer": "https://immicalm.app",
+                "X-Title": "ImmiCalm",
             },
             body: JSON.stringify({
-                model: "claude-sonnet-4-20250514",
+                model: MODEL,
                 max_tokens: 1000,
-                system: systemPrompt,
-                messages: messages.map((m: { role: string; content: string }) => ({
-                    role: m.role,
-                    content: m.content,
-                })),
+                messages: [
+                    { role: "system", content: systemPrompt },
+                    ...messages.map((m: { role: string; content: string }) => ({
+                        role: m.role,
+                        content: m.content,
+                    })),
+                ],
             }),
         });
 
         const data = await response.json();
-        const reply = data.content?.[0]?.text ?? "Sorry, I couldn't generate a response.";
+        const reply = data.choices?.[0]?.message?.content ?? "Sorry, I couldn't generate a response.";
         return NextResponse.json({ reply });
 
     } catch (err) {
-        console.error("Anthropic API error:", err);
+        console.error("OpenRouter API error:", err);
         return NextResponse.json(
             { reply: "Something went wrong. Please try again." },
             { status: 500 }
