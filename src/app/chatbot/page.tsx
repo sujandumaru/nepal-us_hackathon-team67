@@ -12,8 +12,24 @@ type Message = {
     content: string;
 };
 
-// Suggested questions per visa type
-const SUGGESTIONS = {
+// Suggested questions per visa type — used in GENERAL mode (no news context)
+const GENERAL_SUGGESTIONS = {
+    F1: [
+        "What should I know about maintaining F1 status?",
+        "How does OPT work and when should I apply?",
+        "What is STEM OPT and am I eligible?",
+        "What happens if I travel outside the US on F1?",
+    ],
+    H1B: [
+        "What are my rights as an H1B holder?",
+        "Can I change employers on H1B?",
+        "What should I know before traveling internationally?",
+        "How does H1B renewal work?",
+    ],
+};
+
+// Suggested questions per visa type — used in NEWS-SPECIFIC mode
+const NEWS_SUGGESTIONS = {
     F1: [
         "Does this affect my OPT?",
         "Do I need to talk to my DSO?",
@@ -33,22 +49,34 @@ function ChatbotContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const newsId = searchParams.get("newsId");
+    const prefill = searchParams.get("prefill");
 
-    const news = (newsData as NewsItem[]).find((n) => n.id === newsId);
+    const news = newsId ? (newsData as NewsItem[]).find((n) => n.id === newsId) : null;
+    const isGeneralMode = !news;
+
+    const generalGreeting = `Hi! I'm the ImmiCalm assistant. I can answer general questions about ${profile.visaType ?? "immigration"} visas, status, travel, and work authorization.\n\nWhat would you like to know?`;
+
+    const newsGreeting = news
+        ? `Hi! I'm here to help you understand this update:\n\n"${news.title}"\n\nWhat would you like to know? I'll answer based on your ${profile.visaType} visa status${profile.state ? ` in ${profile.state}` : ""}.`
+        : generalGreeting;
 
     const [messages, setMessages] = useState<Message[]>([
-        {
-            role: "assistant",
-            content: news
-                ? `Hi! I'm here to help you understand this update:\n\n"${news.title}"\n\nWhat would you like to know? I'll answer based on your ${profile.visaType} visa status in ${profile.state}.`
-                : "Hi! Ask me anything about this immigration update.",
-        },
+        { role: "assistant", content: newsGreeting },
     ]);
-    const [input, setInput] = useState("");
+    const [input, setInput] = useState(prefill ?? "");
     const [loading, setLoading] = useState(false);
     const bottomRef = useRef<HTMLDivElement>(null);
+    const didAutoSend = useRef(false);
 
-    // Auto scroll to bottom
+    // Auto-send prefilled question once on mount
+    useEffect(() => {
+        if (prefill && !didAutoSend.current) {
+            didAutoSend.current = true;
+            sendMessage(prefill);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     useEffect(() => {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages, loading]);
@@ -70,8 +98,9 @@ function ChatbotContent() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     messages: updated,
-                    newsContext: news,
+                    newsContext: news ?? null,
                     userProfile: profile,
+                    generalMode: isGeneralMode,
                 }),
             });
 
@@ -87,7 +116,9 @@ function ChatbotContent() {
         }
     };
 
-    const suggestions = profile.visaType ? SUGGESTIONS[profile.visaType] : [];
+    const suggestions = isGeneralMode
+        ? (profile.visaType ? GENERAL_SUGGESTIONS[profile.visaType] : GENERAL_SUGGESTIONS.F1)
+        : (profile.visaType ? NEWS_SUGGESTIONS[profile.visaType] : NEWS_SUGGESTIONS.F1);
 
     return (
         <div className="min-h-screen flex flex-col max-w-2xl mx-auto">
@@ -103,28 +134,39 @@ function ChatbotContent() {
                     </button>
                     <div className="flex-1 min-w-0">
                         <h1 className="text-white font-semibold text-sm">ImmiCalm Assistant 🕊️</h1>
-                        {news && (
-                            <p className="text-gray-500 text-xs truncate">{news.title}</p>
-                        )}
+                        <p className="text-gray-500 text-xs truncate">
+                            {isGeneralMode
+                                ? `General ${profile.visaType ?? "immigration"} questions`
+                                : news?.title}
+                        </p>
                     </div>
                     <div className="flex items-center gap-1.5">
                         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                         <span className="text-xs text-gray-500">
-                            {process.env.NEXT_PUBLIC_MOCK_MODE === "true" ? "Mock" : "Live"}
+                            {isGeneralMode ? "General" : "News"}
                         </span>
                     </div>
                 </div>
             </div>
 
-            {/* News Context Banner */}
-            {news && (
+            {/* Context banner — only in news-specific mode */}
+            {!isGeneralMode && news && (
                 <div className="mx-4 mt-4 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3">
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
-                        Discussing
-                    </p>
+                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Discussing</p>
                     <p className="text-sm text-gray-300 font-medium">{news.title}</p>
                     <p className="text-xs text-blue-400 mt-1">
                         Source: {news.source} · {news.date}
+                    </p>
+                </div>
+            )}
+
+            {/* General mode banner */}
+            {isGeneralMode && (
+                <div className="mx-4 mt-4 bg-blue-900/30 border border-blue-800/50 rounded-xl px-4 py-3">
+                    <p className="text-xs text-blue-400 uppercase tracking-wider mb-1">General mode</p>
+                    <p className="text-sm text-gray-300">
+                        Answering general {profile.visaType ?? "immigration"} questions.
+                        For a specific news update, use <span className="text-blue-400 font-medium">Ask AI</span> on any news card.
                     </p>
                 </div>
             )}
@@ -142,7 +184,6 @@ function ChatbotContent() {
                     <MessageBubble key={i} message={msg} />
                 ))}
 
-                {/* Loading indicator */}
                 {loading && (
                     <div className="flex justify-start">
                         <div className="flex items-end gap-2">
@@ -188,7 +229,7 @@ function ChatbotContent() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                        placeholder={`Ask about this update...`}
+                        placeholder={isGeneralMode ? "Ask a general immigration question..." : "Ask about this update..."}
                         disabled={loading}
                         className="flex-1 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-blue-500 disabled:opacity-50"
                     />
@@ -206,7 +247,6 @@ function ChatbotContent() {
     );
 }
 
-// Wrap in Suspense for useSearchParams
 export default function ChatbotPage() {
     return (
         <Suspense fallback={

@@ -10,7 +10,6 @@ export default function Nav() {
     const pathname = usePathname();
     const { profile } = useUser();
 
-    // Compute orb color: red alerts in news → red dot; mood anxious → yellow; else green
     const relevantRed = (newsData as NewsItem[]).filter(
         (n) => n.severity === "red" && profile.visaType && n.affectedVisas.includes(profile.visaType)
     ).length;
@@ -25,7 +24,6 @@ export default function Nav() {
         { label: "Dashboard", href: "/dashboard" },
         { label: "News", href: "/news" },
         { label: "Myth Buster", href: "/mythbuster" },
-        { label: "Ask AI", href: "/chatbot" },
     ];
 
     return (
