@@ -30,7 +30,7 @@ export default function OnboardingPage() {
 
                 {/* Header */}
                 <div className="text-center space-y-2">
-                    <h1 className="text-4xl font-bold text-white">ImmiCalm 🕊️</h1>
+                    <h1 className="text-4xl font-bold text-black">ImmiCalm 🕊️</h1>
                     <p className="text-gray-400 text-lg">
                         Verified immigration updates. No noise. No panic.
                     </p>
@@ -47,8 +47,8 @@ export default function OnboardingPage() {
                                 key={type}
                                 onClick={() => setVisaType(type)}
                                 className={`py-4 rounded-xl font-semibold text-lg transition-all border-2 ${visaType === type
-                                        ? "border-blue-500 bg-blue-500/20 text-blue-300"
-                                        : "border-gray-700 bg-gray-900 text-gray-400 hover:border-gray-500"
+                                    ? "border-blue-500 bg-blue-500/20 text-blue-300"
+                                    : "border-gray-700 bg-gray-900 text-gray-400 hover:border-gray-500"
                                     }`}
                             >
                                 {type}
