@@ -1,0 +1,68 @@
+[
+    {
+        "id": "m1",
+        "claim": "All H1B visas are being cancelled immediately",
+        "verdict": "false",
+        "explanation": "No such order exists. H1B visas currently in effect remain valid. This rumor originated from a misrepresentation of a border security executive order that only applies to new visa applications at the border, not existing holders.",
+        "source": "DHS",
+        "sourceUrl": "https://www.dhs.gov",
+        "date": "2026-03-25",
+        "affectedVisas": [
+            "H1B"
+        ],
+        "viralHeadline": "BREAKING: Trump to cancel all H1B visas by April"
+    },
+    {
+        "id": "m2",
+        "claim": "F1 students will be deported if they participate in campus protests",
+        "verdict": "misleading",
+        "explanation": "While visa holders can face consequences for certain activities, peaceful participation in lawful protests is protected. ICE has not issued any blanket policy targeting student protesters. Individual cases may vary — consult your DSO or an attorney if concerned.",
+        "source": "USCIS",
+        "sourceUrl": "https://www.uscis.gov",
+        "date": "2026-03-20",
+        "affectedVisas": [
+            "F1"
+        ],
+        "viralHeadline": "ICE arresting F1 students at campus protests nationwide"
+    },
+    {
+        "id": "m3",
+        "claim": "OPT is being eliminated for STEM graduates",
+        "verdict": "false",
+        "explanation": "STEM OPT extensions remain fully in place. USCIS has only announced longer processing times, not elimination. Students should apply earlier than usual — at least 90 days before OPT expiry.",
+        "source": "USCIS",
+        "sourceUrl": "https://www.uscis.gov",
+        "date": "2026-03-18",
+        "affectedVisas": [
+            "F1"
+        ],
+        "viralHeadline": "STEM OPT being abolished — thousands of students at risk"
+    },
+    {
+        "id": "m4",
+        "claim": "H1B holders cannot travel outside the US and re-enter",
+        "verdict": "misleading",
+        "explanation": "H1B holders can generally travel and re-enter with a valid visa stamp and approved petition. However, DHS has issued an advisory recommending caution during the current policy review period. Travel is not banned — but consulting an attorney before international travel is currently advisable.",
+        "source": "DHS",
+        "sourceUrl": "https://www.dhs.gov",
+        "date": "2026-03-26",
+        "affectedVisas": [
+            "H1B"
+        ],
+        "viralHeadline": "H1B workers stranded abroad — banned from re-entering US"
+    },
+    {
+        "id": "m5",
+        "claim": "Nepali immigrants are being specifically targeted by new immigration rules",
+        "verdict": "false",
+        "explanation": "There are no immigration policies specifically targeting Nepali nationals. Current policies apply broadly across nationalities. This claim appears to have originated from social media without any verified government source.",
+        "source": "DHS",
+        "sourceUrl": "https://www.dhs.gov",
+        "date": "2026-03-22",
+        "affectedVisas": [
+            "F1",
+            "H1B"
+        ],
+        "viralHeadline": "Nepal added to immigration watch list — visas under review"
+    }
+]

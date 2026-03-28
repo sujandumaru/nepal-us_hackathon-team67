@@ -25,6 +25,11 @@ export default function FeedPage() {
         return item.affectedVisas.includes(profile.visaType!);
     });
 
+    // Relevant news based on visa type
+    const relevantNews = (newsData as NewsItem[]).filter((item) => {
+        return item.affectedVisas.includes(profile.visaType!);
+    });
+
     const redCount = filteredNews.filter((i) => i.severity === "red").length;
 
     return (
@@ -76,7 +81,7 @@ export default function FeedPage() {
                             }`}
                     >
                         {f === "relevant"
-                            ? `My Updates (${filteredNews.length})`
+                            ? `My Updates (${relevantNews.length})`
                             : `All Updates (${newsData.length})`}
                     </button>
                 ))}
