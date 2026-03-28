@@ -1,0 +1,140 @@
+[
+    {
+        "id": "1",
+        "title": "USCIS Extends OPT STEM Extension Processing Times",
+        "source": "USCIS",
+        "sourceUrl": "https://www.uscis.gov",
+        "date": "2026-03-20",
+        "summary": "USCIS has announced extended processing times for STEM OPT extension applications. Students should apply at least 90 days before their OPT expires.",
+        "affectedVisas": [
+            "F1"
+        ],
+        "affectedStates": [
+            "all"
+        ],
+        "severity": "yellow",
+        "affectMessage": "Affects F1 STEM students — apply early",
+        "mythBuster": false,
+        "tags": [
+            "OPT",
+            "STEM",
+            "F1"
+        ]
+    },
+    {
+        "id": "2",
+        "title": "DHS Announces No Changes to H1B Cap for FY2027",
+        "source": "DHS",
+        "sourceUrl": "https://www.dhs.gov",
+        "date": "2026-03-22",
+        "summary": "The Department of Homeland Security confirmed the H1B cap remains unchanged at 65,000 visas plus 20,000 for advanced degree holders for FY2027.",
+        "affectedVisas": [
+            "H1B"
+        ],
+        "affectedStates": [
+            "all"
+        ],
+        "severity": "green",
+        "affectMessage": "No changes — H1B cap stays the same",
+        "mythBuster": false,
+        "tags": [
+            "H1B",
+            "cap",
+            "FY2027"
+        ]
+    },
+    {
+        "id": "3",
+        "title": "White House Immigration Executive Order — What It Actually Means",
+        "source": "White House",
+        "sourceUrl": "https://www.whitehouse.gov",
+        "date": "2026-03-25",
+        "summary": "A new executive order was signed regarding border security. Despite viral headlines, this does NOT affect currently valid F1 or H1B visa holders already in the US.",
+        "affectedVisas": [
+            "F1",
+            "H1B"
+        ],
+        "affectedStates": [
+            "all"
+        ],
+        "severity": "green",
+        "affectMessage": "Does NOT affect current F1/H1B holders in the US",
+        "mythBuster": true,
+        "mythClaim": "All student visas are being revoked immediately",
+        "mythFact": "This order only affects new border crossings, not existing visa holders.",
+        "tags": [
+            "executive-order",
+            "F1",
+            "H1B",
+            "myth"
+        ]
+    },
+    {
+        "id": "4",
+        "title": "New Travel Advisory for H1B Holders Visiting Certain Countries",
+        "source": "DHS",
+        "sourceUrl": "https://www.dhs.gov",
+        "date": "2026-03-26",
+        "summary": "DHS has issued a travel advisory recommending H1B holders consult with an immigration attorney before traveling internationally during the current policy review period.",
+        "affectedVisas": [
+            "H1B"
+        ],
+        "affectedStates": [
+            "all"
+        ],
+        "severity": "red",
+        "affectMessage": "Affects H1B holders — consult lawyer before travel",
+        "mythBuster": false,
+        "tags": [
+            "H1B",
+            "travel",
+            "advisory"
+        ]
+    },
+    {
+        "id": "5",
+        "title": "F1 CPT Authorization Process Remains Unchanged",
+        "source": "USCIS",
+        "sourceUrl": "https://www.uscis.gov",
+        "date": "2026-03-27",
+        "summary": "USCIS confirmed that Curricular Practical Training authorization processes for F1 students remain unchanged. Students should continue to work with their DSO.",
+        "affectedVisas": [
+            "F1"
+        ],
+        "affectedStates": [
+            "all"
+        ],
+        "severity": "green",
+        "affectMessage": "No changes to CPT — you're fine",
+        "mythBuster": false,
+        "tags": [
+            "F1",
+            "CPT",
+            "authorization"
+        ]
+    },
+    {
+        "id": "6",
+        "title": "California Passes State-Level Immigrant Worker Protections",
+        "source": "California Legislature",
+        "sourceUrl": "https://leginfo.legislature.ca.gov",
+        "date": "2026-03-18",
+        "summary": "California has enacted additional state-level protections for immigrant workers, including H1B holders, ensuring workplace rights cannot be violated based on immigration status.",
+        "affectedVisas": [
+            "H1B",
+            "F1"
+        ],
+        "affectedStates": [
+            "CA"
+        ],
+        "severity": "green",
+        "affectMessage": "Good news for CA residents — extra protections added",
+        "mythBuster": false,
+        "tags": [
+            "H1B",
+            "F1",
+            "California",
+            "worker-rights"
+        ]
+    }
+]
