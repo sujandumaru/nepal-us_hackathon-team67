@@ -122,34 +122,36 @@ export async function POST(req: NextRequest) {
     try {
         const question = buildQuestion(messages, newsContext, userProfile);
 
-        const response = await fetch(`${CHATBOT_API_BASE}/api/chat`, {
+        const response = await fetch(`${CHATBOT_API_BASE}/api/chat/stream`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                Accept: "text/event-stream",
             },
-            body: JSON.stringify({
-                question,
-            }),
+            body: JSON.stringify({ question }),
         });
 
-        if (!response.ok) {
+        if (!response.ok || !response.body) {
             const detail = await response.text();
             return NextResponse.json(
-                {
-                    reply: "Something went wrong while reaching the chatbot backend.",
-                    detail,
-                },
-                { status: response.status },
+                { error: "Chatbot streaming backend failed.", detail },
+                { status: response.status || 500 },
             );
         }
 
-        const data = await response.json();
-        const reply = data.answer ?? "Sorry, I couldn't generate a response.";
-        return NextResponse.json({ reply });
+        return new Response(response.body, {
+            status: 200,
+            headers: {
+                "Content-Type": "text/event-stream",
+                "Cache-Control": "no-cache",
+                Connection: "keep-alive",
+                "X-Accel-Buffering": "no",
+            },
+        });
     } catch (err) {
-        console.error("Chatbot API proxy error:", err);
+        console.error("Chatbot stream proxy error:", err);
         return NextResponse.json(
-            { reply: "Something went wrong. Please try again." },
+            { error: "Something went wrong while streaming chatbot response." },
             { status: 500 },
         );
     }

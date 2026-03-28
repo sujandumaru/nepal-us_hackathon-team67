@@ -12,6 +12,11 @@ type Message = {
     content: string;
 };
 
+type StreamMeta = {
+    sources?: string[];
+    route_reason?: string;
+};
+
 // Suggested questions per visa type — used in GENERAL mode (no news context)
 const GENERAL_SUGGESTIONS = {
     F1: [
@@ -29,6 +34,8 @@ const GENERAL_SUGGESTIONS = {
 };
 
 // Suggested questions per visa type — used in NEWS-SPECIFIC mode
+
+// Suggested questions per visa type
 const NEWS_SUGGESTIONS = {
     F1: [
         "Does this affect my OPT?",
@@ -65,6 +72,7 @@ function ChatbotContent() {
     ]);
     const [input, setInput] = useState(prefill ?? "");
     const [loading, setLoading] = useState(false);
+    const [streamMeta, setStreamMeta] = useState<StreamMeta | null>(null);
     const bottomRef = useRef<HTMLDivElement>(null);
     const didAutoSend = useRef(false);
 
@@ -87,13 +95,15 @@ function ChatbotContent() {
 
         const userMessage: Message = { role: "user", content };
         const updated = [...messages, userMessage];
+        const pendingAssistant: Message = { role: "assistant", content: "" };
 
-        setMessages(updated);
+        setMessages([...updated, pendingAssistant]);
         setInput("");
         setLoading(true);
+        setStreamMeta(null);
 
         try {
-            const res = await fetch("/api/chat", {
+            const res = await fetch("/api/chat/stream", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -104,8 +114,60 @@ function ChatbotContent() {
                 }),
             });
 
-            const data = await res.json();
-            setMessages([...updated, { role: "assistant", content: data.reply }]);
+            if (!res.ok || !res.body) {
+                throw new Error("Streaming response not available.");
+            }
+
+            const reader = res.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = "";
+            let assistantText = "";
+
+            const updateAssistantMessage = (nextText: string) => {
+                setMessages((prev) => {
+                    const next = [...prev];
+                    next[next.length - 1] = { role: "assistant", content: nextText };
+                    return next;
+                });
+            };
+
+            while (true) {
+                const { value, done } = await reader.read();
+                if (done) break;
+
+                buffer += decoder.decode(value, { stream: true });
+                const chunks = buffer.split("\n\n");
+                buffer = chunks.pop() ?? "";
+
+                for (const chunk of chunks) {
+                    const lines = chunk.split("\n");
+                    const eventLine = lines.find((line) => line.startsWith("event: "));
+                    const dataLine = lines.find((line) => line.startsWith("data: "));
+                    if (!eventLine || !dataLine) continue;
+
+                    const eventName = eventLine.slice(7).trim();
+                    const payload = JSON.parse(dataLine.slice(6));
+
+                    if (eventName === "meta") {
+                        setStreamMeta(payload);
+                        continue;
+                    }
+
+                    if (eventName === "token") {
+                        assistantText += payload.text ?? "";
+                        updateAssistantMessage(assistantText);
+                        continue;
+                    }
+
+                    if (eventName === "error") {
+                        throw new Error(payload.message ?? "Stream error");
+                    }
+                }
+            }
+
+            if (!assistantText.trim()) {
+                updateAssistantMessage("Sorry, I couldn't generate a response.");
+            }
         } catch {
             setMessages([
                 ...updated,

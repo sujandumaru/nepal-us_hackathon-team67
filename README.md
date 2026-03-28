@@ -2,6 +2,31 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Create a local env file for API proxy configuration:
+
+```bash
+cp .env.example .env.local
+```
+
+Set backend URL in `.env.local`:
+
+```env
+CHATBOT_API_BASE=http://127.0.0.1:8000
+```
+
+Chat mode behavior:
+
+- General Q&A: no selected news article, assistant runs in generic visa Q&A mode.
+- Article-specific Q&A: when a news item is selected, the API proxy injects article context and forces article-first answering.
+
+Optional full article fields in `newsContext` (if your dataset includes them):
+
+- `articleContent`
+- `content`
+- `body`
+
+If present, these are included in context (with a safety truncation limit) so responses can be specific to the full article.
+
 First, run the development server:
 
 ```bash
