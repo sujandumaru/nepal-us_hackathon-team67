@@ -265,7 +265,14 @@ export default function DashboardPage() {
 
     // ── Data ────────────────────────────────────────────────────────────────────
     const allNews = newsData as NewsItem[];
-    const relevantNews = allNews.filter((n) => n.affectedVisas.includes(profile.visaType!));
+    const relevantNews = allNews.filter((n) => n.affectedVisas.includes(profile.visaType!))
+        .sort((a, b) => {
+            if (a.severity === "red" && b.severity !== "red") return -1;
+            if (a.severity !== "red" && b.severity === "red") return 1;
+            if (a.severity === "yellow" && b.severity === "green") return -1;
+            if (a.severity === "green" && b.severity === "yellow") return 1;
+            return 0;
+        });
     const redCount = relevantNews.filter((n) => n.severity === "red").length;
     const recentNews = relevantNews.slice(0, 3);
 

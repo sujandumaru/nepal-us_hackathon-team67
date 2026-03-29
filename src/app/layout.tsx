@@ -8,7 +8,7 @@ const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "ImmiCalm — Immigration Peace of Mind",
-  description: "Verified immigration updates for Nepali immigrants in the US",
+  description: "Verified immigration updates for F1/H1B visa holders in the US",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
