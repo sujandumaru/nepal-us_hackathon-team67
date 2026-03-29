@@ -19,14 +19,22 @@ export type NewsItem = {
     tags: string[];
 };
 
+const severityClass = {
+    green: "severity-safe",
+    yellow: "severity-watch",
+    red: "severity-alert",
+};
+
 export default function NewsCard({
     item,
     visaType,
     state,
+    index = 0,
 }: {
     item: NewsItem;
     visaType: string;
     state: string;
+    index?: number;
 }) {
     const router = useRouter();
     const [expanded, setExpanded] = useState(false);
@@ -35,28 +43,40 @@ export default function NewsCard({
         item.affectedStates.includes("all") || item.affectedStates.includes(state);
 
     return (
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 space-y-4 hover:border-gray-300 transition-all">
-
+        <div
+            className={`glass-card ${severityClass[item.severity]} p-5 space-y-4 animate-slide-up`}
+            style={{ animationDelay: `${index * 60}ms` }}
+        >
             {/* Header */}
             <div className="flex items-start justify-between gap-3">
-                <div className="space-y-1 flex-1">
+                <div className="space-y-1.5 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-xs font-semibold text-blue-500 uppercase tracking-wider">
+                        <span
+                            className="text-xs font-semibold uppercase tracking-wider"
+                            style={{ color: "var(--accent-calm-light)" }}
+                        >
                             {item.source}
                         </span>
                         {item.mythBuster && (
-                            <span className="text-xs bg-purple-50 text-purple-600 border border-purple-200 px-2 py-0.5 rounded-full">
+                            <span className="chip chip-active text-xs">
                                 🔍 Myth Buster
                             </span>
                         )}
                         {!isRelevantState && (
-                            <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">
+                            <span className="chip text-xs">
                                 Other state
                             </span>
                         )}
                     </div>
-                    <h3 className="text-gray-900 font-semibold leading-snug">{item.title}</h3>
-                    <p className="text-xs text-gray-400">{item.date}</p>
+                    <h3
+                        className="font-semibold leading-snug text-base"
+                        style={{ color: "var(--text-primary)" }}
+                    >
+                        {item.title}
+                    </h3>
+                    <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+                        {item.date}
+                    </p>
                 </div>
             </div>
 
@@ -65,12 +85,16 @@ export default function NewsCard({
 
             {/* Summary */}
             <div>
-                <p className={`text-gray-600 text-sm leading-relaxed ${!expanded ? "line-clamp-2" : ""}`}>
+                <p
+                    className={`text-sm leading-relaxed ${!expanded ? "line-clamp-2" : ""}`}
+                    style={{ color: "var(--text-secondary)" }}
+                >
                     {item.summary}
                 </p>
                 <button
                     onClick={() => setExpanded(!expanded)}
-                    className="text-blue-500 text-xs mt-1 hover:text-blue-600"
+                    className="text-xs mt-1.5 font-medium transition-colors"
+                    style={{ color: "var(--accent-calm-light)" }}
                 >
                     {expanded ? "Show less ↑" : "Read more ↓"}
                 </button>
@@ -79,7 +103,7 @@ export default function NewsCard({
             {/* Tags */}
             <div className="flex flex-wrap gap-2">
                 {item.tags.map((tag) => (
-                    <span key={tag} className="text-xs bg-gray-100 text-gray-500 px-2 py-1 rounded-full">
+                    <span key={tag} className="chip">
                         #{tag}
                     </span>
                 ))}
@@ -89,7 +113,20 @@ export default function NewsCard({
             <div className="flex gap-2 pt-1">
                 <button
                     onClick={() => router.push(`/chatbot?newsId=${item.id}`)}
-                    className="flex-1 py-2 rounded-xl text-sm font-medium bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 transition-all"
+                    className="flex-1 py-2.5 rounded-xl text-sm font-medium transition-all"
+                    style={{
+                        background: "var(--accent-calm-glow)",
+                        color: "var(--accent-calm-light)",
+                        border: "1px solid hsla(168, 55%, 42%, 0.2)",
+                    }}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "hsla(168, 55%, 42%, 0.2)";
+                        e.currentTarget.style.borderColor = "hsla(168, 55%, 42%, 0.35)";
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "var(--accent-calm-glow)";
+                        e.currentTarget.style.borderColor = "hsla(168, 55%, 42%, 0.2)";
+                    }}
                 >
                     💬 Ask AI about this
                 </button>
@@ -97,12 +134,12 @@ export default function NewsCard({
                     href={item.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all"
+                    className="glass-btn px-4 py-2.5 text-sm font-medium flex items-center gap-1"
+                    style={{ color: "var(--text-secondary)" }}
                 >
                     Source ↗
                 </a>
             </div>
-
         </div>
     );
 }

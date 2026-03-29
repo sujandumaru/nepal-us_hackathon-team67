@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 import { useUser } from "@/lib/userContext";
 import newsData from "@/data/news.json";
 import { NewsItem } from "@/components/news/NewsCard";
@@ -15,28 +16,45 @@ export default function Nav() {
     ).length;
     const moodScore = profile.mood ?? 5;
 
-    const dotColor =
-        relevantRed > 0 ? "#A32D2D"
-            : moodScore <= 2 ? "#BA7517"
-                : "#3B6D11";
+    const dotState =
+        relevantRed > 0 ? "alert"
+            : moodScore <= 2 ? "watch"
+                : "calm";
+
+    const dotColors = {
+        calm: "bg-emerald-400",
+        watch: "bg-amber-400",
+        alert: "bg-red-400",
+    };
 
     const tabs = [
-        { label: "Dashboard", href: "/dashboard" },
-        { label: "News", href: "/news" },
-        { label: "Myth Buster", href: "/mythbuster" },
+        { label: "Dashboard", href: "/dashboard", icon: "◉" },
+        { label: "News", href: "/news", icon: "◎" },
+        { label: "Myth Buster", href: "/mythbuster", icon: "◈" },
     ];
 
     return (
-        <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 flex items-center justify-between px-6 h-14">
+        <nav className="glass-nav sticky top-0 z-50 flex items-center justify-between px-6 h-14">
             <button
                 onClick={() => router.push("/dashboard")}
-                className="flex items-center gap-2 font-semibold text-gray-900 text-base hover:opacity-80 transition-opacity"
+                className="flex items-center gap-2.5 font-semibold text-base hover:opacity-80 transition-opacity"
+                style={{ color: "var(--text-primary)" }}
             >
-                <span
-                    className="w-2.5 h-2.5 rounded-full transition-colors duration-500"
-                    style={{ backgroundColor: dotColor }}
-                />
-                ImmiCalm
+                <span className="relative flex items-center justify-center">
+                    <Image
+                        src="/logo.png"
+                        alt="ImmiCalm"
+                        width={28}
+                        height={28}
+                        className="rounded-md"
+                    />
+                    <span
+                        className={`absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full ${dotColors[dotState]} transition-colors duration-700`}
+                        style={{ border: "2px solid var(--bg-deep)" }}
+                    />
+                </span>
+                <span style={{ color: "var(--accent-calm-light)" }}>Immi</span>
+                <span style={{ color: "var(--text-primary)", marginLeft: "-6px" }}>Calm</span>
             </button>
 
             <div className="flex gap-1">
@@ -46,10 +64,15 @@ export default function Nav() {
                         <button
                             key={tab.href}
                             onClick={() => router.push(tab.href)}
-                            className={`px-3 py-1.5 rounded-lg text-sm transition-all ${active
-                                ? "bg-gray-100 text-gray-900 font-medium"
-                                : "text-gray-500 hover:bg-gray-50 hover:text-gray-800"
+                            className={`px-3.5 py-1.5 rounded-lg text-sm transition-all duration-300 ${active
+                                ? "font-medium"
+                                : "hover:opacity-80"
                                 }`}
+                            style={{
+                                background: active ? "var(--accent-calm-glow)" : "transparent",
+                                color: active ? "var(--accent-calm-light)" : "var(--text-secondary)",
+                                border: active ? "1px solid hsla(168, 55%, 42%, 0.2)" : "1px solid transparent",
+                            }}
                         >
                             {tab.label}
                         </button>

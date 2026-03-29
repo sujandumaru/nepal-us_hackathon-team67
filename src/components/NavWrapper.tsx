@@ -5,7 +5,7 @@ import Nav from "@/components/Nav";
 import AskAIButton from "@/components/AskAIButton";
 
 // Pages that should NOT show the nav (full-screen flows)
-const HIDDEN_ON = ["/onboarding", "/chatbot"];
+const HIDDEN_ON = ["/", "/onboarding", "/chatbot"];
 
 export default function NavWrapper() {
     const pathname = usePathname();

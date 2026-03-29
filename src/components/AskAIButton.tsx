@@ -9,7 +9,6 @@ export default function AskAIButton() {
     const { profile } = useUser();
     const [open, setOpen] = useState(false);
 
-    // General questions — NOT tied to any specific news item
     const suggestions = profile.visaType === "F1"
         ? [
             "What should I know about maintaining F1 status?",
@@ -25,13 +24,11 @@ export default function AskAIButton() {
         ];
 
     function handleSuggestion(q: string) {
-        // No newsId — opens general chatbot with prefilled question
         router.push(`/chatbot?prefill=${encodeURIComponent(q)}`);
         setOpen(false);
     }
 
     function handleOpenChat() {
-        // General chatbot — no newsId passed
         router.push("/chatbot");
         setOpen(false);
     }
@@ -41,27 +38,37 @@ export default function AskAIButton() {
             {/* Backdrop */}
             {open && (
                 <div
-                    className="fixed inset-0 z-40"
+                    className="fixed inset-0 z-40 animate-fade-in"
+                    style={{ background: "hsla(222, 28%, 5%, 0.5)", backdropFilter: "blur(4px)" }}
                     onClick={() => setOpen(false)}
                 />
             )}
 
             {/* Panel */}
             {open && (
-                <div className="fixed bottom-20 right-4 z-50 w-72 bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden">
-                    <div className="bg-blue-600 px-4 py-3 flex items-center justify-between">
-                        <div className="flex items-center gap-2">
+                <div
+                    className="fixed bottom-20 right-4 z-50 w-80 glass-card overflow-hidden animate-scale-in"
+                    style={{ transformOrigin: "bottom right" }}
+                >
+                    {/* Header */}
+                    <div
+                        className="px-4 py-3.5 flex items-center justify-between"
+                        style={{
+                            background: "linear-gradient(135deg, var(--accent-calm), hsl(168, 60%, 34%))",
+                        }}
+                    >
+                        <div className="flex items-center gap-2.5">
                             <span className="text-lg">🕊️</span>
                             <div>
                                 <p className="text-white text-sm font-semibold">ImmiCalm Assistant</p>
-                                <p className="text-blue-200 text-xs">
+                                <p className="text-white/60 text-xs">
                                     {profile.visaType ? `General ${profile.visaType} questions` : "Ask anything about immigration"}
                                 </p>
                             </div>
                         </div>
                         <button
                             onClick={() => setOpen(false)}
-                            className="text-blue-200 hover:text-white text-xl leading-none"
+                            className="text-white/60 hover:text-white text-xl leading-none transition-colors"
                         >
                             ×
                         </button>
@@ -69,19 +76,23 @@ export default function AskAIButton() {
 
                     {/* Info note */}
                     <div className="px-4 pt-3 pb-0">
-                        <p className="text-xs text-gray-400 leading-relaxed">
-                            General immigration questions. For news-specific answers, use <strong className="text-gray-600">Ask AI</strong> on each news card.
+                        <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                            General immigration questions. For news-specific answers, use{" "}
+                            <strong style={{ color: "var(--accent-calm-light)" }}>Ask AI</strong> on each news card.
                         </p>
                     </div>
 
                     {/* Quick questions */}
                     <div className="px-4 py-3 space-y-2">
-                        <p className="text-xs text-gray-400 uppercase tracking-wider">Quick questions</p>
+                        <p className="text-xs uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
+                            Quick questions
+                        </p>
                         {suggestions.map((s) => (
                             <button
                                 key={s}
                                 onClick={() => handleSuggestion(s)}
-                                className="w-full text-left text-sm text-gray-700 bg-gray-50 hover:bg-blue-50 hover:text-blue-700 border border-gray-200 hover:border-blue-200 px-3 py-2 rounded-xl transition-all"
+                                className="glass-btn w-full text-left text-sm px-3 py-2.5"
+                                style={{ color: "var(--text-secondary)" }}
                             >
                                 {s}
                             </button>
@@ -92,7 +103,7 @@ export default function AskAIButton() {
                     <div className="px-4 pb-4">
                         <button
                             onClick={handleOpenChat}
-                            className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-xl transition-all"
+                            className="btn-primary w-full py-2.5 text-sm"
                         >
                             Open full chat →
                         </button>
@@ -103,12 +114,20 @@ export default function AskAIButton() {
             {/* FAB */}
             <button
                 onClick={() => setOpen((v) => !v)}
-                className={`fixed bottom-5 right-4 z-50 w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all active:scale-95 ${open ? "bg-gray-700 rotate-90" : "bg-blue-600 hover:bg-blue-500"
-                    }`}
+                className={`fixed bottom-5 right-4 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 active:scale-95 ${open ? "" : "animate-breathe"}`}
+                style={{
+                    background: open
+                        ? "var(--bg-elevated)"
+                        : "linear-gradient(135deg, var(--accent-calm), hsl(168, 60%, 34%))",
+                    boxShadow: open
+                        ? "none"
+                        : "0 0 24px -4px var(--accent-calm-glow), 0 4px 12px -2px hsla(0,0%,0%,0.3)",
+                    border: `1px solid ${open ? "var(--glass-border)" : "hsla(168, 55%, 42%, 0.3)"}`,
+                }}
                 aria-label="Ask AI"
             >
                 {open
-                    ? <span className="text-white text-xl">×</span>
+                    ? <span className="text-xl" style={{ color: "var(--text-secondary)" }}>×</span>
                     : <span className="text-2xl">🕊️</span>
                 }
             </button>

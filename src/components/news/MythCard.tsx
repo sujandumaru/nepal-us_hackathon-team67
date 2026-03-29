@@ -17,48 +17,70 @@ export type Myth = {
 const verdictConfig = {
     false: {
         label: "FALSE",
-        headerBg: "bg-red-50",
-        border: "border-red-200",
-        text: "text-red-600",
-        icon: "❌",
+        gradient: "linear-gradient(135deg, hsla(0, 60%, 55%, 0.15), hsla(0, 60%, 45%, 0.05))",
+        border: "hsla(0, 60%, 55%, 0.25)",
+        text: "hsl(0, 60%, 65%)",
+        icon: "✕",
+        iconBg: "hsla(0, 60%, 55%, 0.15)",
     },
     misleading: {
         label: "MISLEADING",
-        headerBg: "bg-amber-50",
-        border: "border-amber-200",
-        text: "text-amber-600",
-        icon: "⚠️",
+        gradient: "linear-gradient(135deg, hsla(38, 80%, 55%, 0.15), hsla(38, 80%, 45%, 0.05))",
+        border: "hsla(38, 80%, 55%, 0.25)",
+        text: "hsl(38, 80%, 65%)",
+        icon: "⚡",
+        iconBg: "hsla(38, 80%, 55%, 0.15)",
     },
     true: {
         label: "TRUE",
-        headerBg: "bg-green-50",
-        border: "border-green-200",
-        text: "text-green-600",
-        icon: "✅",
+        gradient: "linear-gradient(135deg, hsla(152, 50%, 48%, 0.15), hsla(152, 50%, 38%, 0.05))",
+        border: "hsla(152, 50%, 48%, 0.25)",
+        text: "hsl(152, 50%, 60%)",
+        icon: "✓",
+        iconBg: "hsla(152, 50%, 48%, 0.15)",
     },
 };
 
-export default function MythCard({ myth }: { myth: Myth }) {
+export default function MythCard({ myth, index = 0 }: { myth: Myth; index?: number }) {
     const [expanded, setExpanded] = useState(false);
     const config = verdictConfig[myth.verdict];
 
     return (
-        <div className={`border rounded-2xl overflow-hidden ${config.border}`}>
-
+        <div
+            className="glass-card overflow-hidden animate-slide-up"
+            style={{ animationDelay: `${index * 60}ms` }}
+        >
             {/* Verdict header */}
-            <div className={`px-5 py-3 flex items-center gap-3 ${config.headerBg}`}>
-                <span className="text-lg">{config.icon}</span>
+            <div
+                className="px-5 py-3.5 flex items-center gap-3"
+                style={{
+                    background: config.gradient,
+                    borderBottom: `1px solid ${config.border}`,
+                }}
+            >
+                <span
+                    className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold"
+                    style={{
+                        background: config.iconBg,
+                        color: config.text,
+                    }}
+                >
+                    {config.icon}
+                </span>
                 <div className="flex-1">
-                    <span className={`text-xs font-bold uppercase tracking-widest ${config.text}`}>
+                    <span
+                        className="text-xs font-bold uppercase tracking-widest"
+                        style={{ color: config.text }}
+                    >
                         {config.label}
                     </span>
-                    <p className="text-gray-500 text-xs mt-0.5">
+                    <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
                         Verified by {myth.source} · {myth.date}
                     </p>
                 </div>
-                <div className="flex gap-1">
+                <div className="flex gap-1.5">
                     {myth.affectedVisas.map((v) => (
-                        <span key={v} className="text-xs bg-white text-gray-600 border border-gray-200 px-2 py-0.5 rounded-full">
+                        <span key={v} className="chip">
                             {v}
                         </span>
                     ))}
@@ -66,23 +88,39 @@ export default function MythCard({ myth }: { myth: Myth }) {
             </div>
 
             {/* Body */}
-            <div className="bg-white px-5 py-4 space-y-4">
+            <div className="px-5 py-4 space-y-4">
 
                 {/* Viral headline */}
-                <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3">
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">🔥 Viral claim</p>
-                    <p className="text-gray-700 text-sm italic">"{myth.viralHeadline}"</p>
+                <div
+                    className="rounded-xl px-4 py-3"
+                    style={{
+                        background: "hsla(0, 60%, 50%, 0.06)",
+                        border: "1px solid hsla(0, 60%, 50%, 0.12)",
+                    }}
+                >
+                    <p className="text-xs uppercase tracking-wider mb-1.5" style={{ color: "var(--text-muted)" }}>
+                        🔥 Viral claim
+                    </p>
+                    <p className="text-sm italic" style={{ color: "hsl(0, 50%, 70%)" }}>
+                        &quot;{myth.viralHeadline}&quot;
+                    </p>
                 </div>
 
                 {/* Explanation */}
                 <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">✅ What's actually true</p>
-                    <p className={`text-sm leading-relaxed text-gray-700 ${expanded ? "" : "line-clamp-3"}`}>
+                    <p className="text-xs uppercase tracking-wider mb-2" style={{ color: "var(--text-muted)" }}>
+                        ✓ What&apos;s actually true
+                    </p>
+                    <p
+                        className={`text-sm leading-relaxed ${expanded ? "" : "line-clamp-3"}`}
+                        style={{ color: "var(--text-secondary)" }}
+                    >
                         {myth.explanation}
                     </p>
                     <button
                         onClick={() => setExpanded(!expanded)}
-                        className="text-blue-500 text-xs mt-1 hover:text-blue-600"
+                        className="text-xs mt-1.5 font-medium"
+                        style={{ color: "var(--accent-calm-light)" }}
                     >
                         {expanded ? "Show less ↑" : "Read full explanation ↓"}
                     </button>
@@ -93,11 +131,11 @@ export default function MythCard({ myth }: { myth: Myth }) {
                     href={myth.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-blue-500 hover:text-blue-600 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium transition-colors"
+                    style={{ color: "var(--accent-calm-light)" }}
                 >
                     📎 View official source: {myth.source} ↗
                 </a>
-
             </div>
         </div>
     );

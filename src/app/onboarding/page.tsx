@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { useUser } from "@/lib/userContext";
 
 const US_STATES = [
@@ -12,7 +13,6 @@ const US_STATES = [
     "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
 ];
 
-// States that currently have meaningful extra content
 const NOTABLE_STATES: Record<string, string> = {
     "California": "🏛️ California has extra state-level immigrant worker protections",
 };
@@ -33,20 +33,59 @@ export default function OnboardingPage() {
     const stateNote = state ? NOTABLE_STATES[state] : null;
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-gray-50">
-            <div className="max-w-md w-full space-y-8">
+        <div className="min-h-screen flex flex-col items-center justify-center px-6 relative overflow-hidden">
+
+            {/* Ambient background glow */}
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background: `
+                        radial-gradient(ellipse 50% 40% at 50% 30%, hsla(168, 55%, 42%, 0.06), transparent),
+                        radial-gradient(ellipse 40% 30% at 20% 80%, hsla(222, 40%, 25%, 0.3), transparent),
+                        radial-gradient(ellipse 40% 30% at 80% 70%, hsla(168, 40%, 20%, 0.15), transparent)
+                    `,
+                }}
+            />
+
+            <div className="max-w-md w-full space-y-8 relative z-10 animate-float-in">
 
                 {/* Header */}
-                <div className="text-center space-y-2">
-                    <h1 className="text-4xl font-bold text-gray-900">ImmiCalm 🕊️</h1>
-                    <p className="text-gray-500 text-lg">
+                <div className="text-center space-y-3">
+                    {/* Logo */}
+                    <div className="flex justify-center mb-4">
+                        <div className="relative">
+                            <Image
+                                src="/logo.png"
+                                alt="ImmiCalm"
+                                width={80}
+                                height={80}
+                                className="rounded-2xl animate-breathe"
+                                style={{
+                                    boxShadow: "0 0 40px -8px var(--accent-calm-glow)",
+                                }}
+                                priority
+                            />
+                            <div
+                                className="absolute inset-[-6px] rounded-[22px] animate-breathe-ring"
+                                style={{
+                                    border: "2px solid var(--accent-calm)",
+                                    opacity: 0.2,
+                                }}
+                            />
+                        </div>
+                    </div>
+                    <h1 className="text-4xl font-bold">
+                        <span style={{ color: "var(--accent-calm-light)" }}>Immi</span>
+                        <span style={{ color: "var(--text-primary)" }}>Calm</span>
+                    </h1>
+                    <p className="text-lg" style={{ color: "var(--text-secondary)" }}>
                         Verified immigration updates. No noise. No panic.
                     </p>
                 </div>
 
                 {/* Visa Type */}
                 <div className="space-y-3">
-                    <label className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                    <label className="text-xs font-medium uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
                         Your visa type
                     </label>
                     <div className="grid grid-cols-2 gap-3">
@@ -54,13 +93,24 @@ export default function OnboardingPage() {
                             <button
                                 key={type}
                                 onClick={() => setVisaType(type)}
-                                className={`py-4 rounded-xl font-semibold text-lg transition-all border-2 ${visaType === type
-                                    ? "border-blue-500 bg-blue-50 text-blue-700"
-                                    : "border-gray-200 bg-white text-gray-500 hover:border-gray-300"
-                                    }`}
+                                className="py-5 rounded-xl font-semibold text-lg transition-all duration-300"
+                                style={{
+                                    background: visaType === type
+                                        ? "var(--accent-calm-glow)"
+                                        : "var(--bg-surface)",
+                                    border: visaType === type
+                                        ? "2px solid var(--accent-calm)"
+                                        : "2px solid var(--glass-border)",
+                                    color: visaType === type
+                                        ? "var(--accent-calm-light)"
+                                        : "var(--text-secondary)",
+                                    boxShadow: visaType === type
+                                        ? "0 0 24px -4px var(--accent-calm-glow)"
+                                        : "none",
+                                }}
                             >
                                 {type}
-                                <p className="text-xs font-normal mt-1 text-gray-400">
+                                <p className="text-xs font-normal mt-1" style={{ color: "var(--text-muted)" }}>
                                     {type === "F1" ? "Student visa" : "Work visa"}
                                 </p>
                             </button>
@@ -68,31 +118,42 @@ export default function OnboardingPage() {
                     </div>
                 </div>
 
-                {/* State — optional with explanation */}
+                {/* State */}
                 <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                        <label className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                        <label className="text-xs font-medium uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
                             State of residence
-                            <span className="ml-2 text-xs font-normal normal-case text-gray-400">(optional)</span>
+                            <span className="ml-2 text-xs font-normal normal-case" style={{ color: "var(--text-muted)" }}>
+                                (optional)
+                            </span>
                         </label>
                         <button
                             onClick={() => setShowStateInfo((v) => !v)}
-                            className="text-xs text-blue-400 hover:text-blue-600"
+                            className="text-xs font-medium transition-colors"
+                            style={{ color: "var(--accent-calm-light)" }}
                         >
                             Why?
                         </button>
                     </div>
 
                     {showStateInfo && (
-                        <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-xs text-blue-700 leading-relaxed">
-                            Some states have their own immigrant protections or policies — for example, California has extra state-level worker protections. Adding your state lets us surface those updates. It's optional and we never store it.
+                        <div
+                            className="glass-card-sm px-4 py-3 text-xs leading-relaxed animate-float-in"
+                            style={{ color: "var(--accent-calm-light)" }}
+                        >
+                            Some states have their own immigrant protections or policies — for example, California has extra state-level worker protections. Adding your state lets us surface those updates. It&apos;s optional and we never store it.
                         </div>
                     )}
 
                     <select
                         value={state}
                         onChange={(e) => setState(e.target.value)}
-                        className="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:border-blue-400 focus:outline-none"
+                        className="w-full px-4 py-3.5 rounded-xl text-sm"
+                        style={{
+                            background: "var(--bg-elevated)",
+                            border: "2px solid var(--glass-border)",
+                            color: state ? "var(--text-primary)" : "var(--text-muted)",
+                        }}
                     >
                         <option value="">Skip — show all updates</option>
                         {US_STATES.map((s) => (
@@ -101,22 +162,31 @@ export default function OnboardingPage() {
                     </select>
 
                     {stateNote && (
-                        <div className="bg-green-50 border border-green-200 rounded-xl px-4 py-2.5">
-                            <p className="text-xs text-green-700">{stateNote}</p>
+                        <div
+                            className="rounded-xl px-4 py-2.5 animate-float-in"
+                            style={{
+                                background: "var(--accent-safe-glow)",
+                                border: "1px solid hsla(152, 50%, 48%, 0.2)",
+                            }}
+                        >
+                            <p className="text-xs" style={{ color: "var(--accent-safe)" }}>{stateNote}</p>
                         </div>
                     )}
                 </div>
 
                 {/* Privacy Note */}
-                <p className="text-xs text-gray-400 text-center">
-                    🔒 We never store personal data. This is used only to filter relevant updates for you.
-                </p>
+                <div className="flex items-center justify-center gap-2">
+                    <span className="text-sm">🔒</span>
+                    <p className="text-xs text-center" style={{ color: "var(--text-muted)" }}>
+                        We never store personal data. This is used only to filter relevant updates for you.
+                    </p>
+                </div>
 
                 {/* Continue Button */}
                 <button
                     onClick={handleContinue}
                     disabled={!visaType}
-                    className="w-full py-4 rounded-xl font-semibold text-lg bg-blue-600 hover:bg-blue-500 text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                    className="btn-primary w-full py-4 text-lg"
                 >
                     Show my updates →
                 </button>
