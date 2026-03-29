@@ -18,7 +18,14 @@ export default function NewsPage() {
     if (!profile.visaType) return null;
 
     const allNews = newsData as NewsItem[];
-    const relevantNews = allNews.filter((n) => n.affectedVisas.includes(profile.visaType!));
+    const sortedAllNews = allNews.sort((a, b) => {
+        if (a.severity === "red" && b.severity !== "red") return -1;
+        if (a.severity !== "red" && b.severity === "red") return 1;
+        if (a.severity === "yellow" && b.severity === "green") return -1;
+        if (a.severity === "green" && b.severity === "yellow") return 1;
+        return 0;
+    });
+    const relevantNews = sortedAllNews.filter((n) => n.affectedVisas.includes(profile.visaType!));
     const filteredNews = filter === "relevant" ? relevantNews : allNews;
     const redCount = filteredNews.filter((n) => n.severity === "red").length;
 
@@ -49,8 +56,8 @@ export default function NewsPage() {
                 <button
                     onClick={() => setFilter("relevant")}
                     className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === "relevant"
-                            ? "bg-blue-600 text-white"
-                            : "bg-white text-gray-500 border border-gray-200 hover:bg-gray-50"
+                        ? "bg-blue-600 text-white"
+                        : "bg-white text-gray-500 border border-gray-200 hover:bg-gray-50"
                         }`}
                 >
                     My updates ({relevantNews.length})
@@ -58,8 +65,8 @@ export default function NewsPage() {
                 <button
                     onClick={() => setFilter("all")}
                     className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === "all"
-                            ? "bg-blue-600 text-white"
-                            : "bg-white text-gray-500 border border-gray-200 hover:bg-gray-50"
+                        ? "bg-blue-600 text-white"
+                        : "bg-white text-gray-500 border border-gray-200 hover:bg-gray-50"
                         }`}
                 >
                     All updates ({allNews.length})
