@@ -373,6 +373,11 @@ This was a conscious architectural decision: immigrants dealing with visa anxiet
 ## 👥 Team
 
 **Team 67** — US-Nepal Hackathon 2026
+- Sujan Dumaru
+- Sujan Maharjan
+- Sarad Gaihre
+- Suman Dangal
+- Saksham Niraula
 
 ---
 
