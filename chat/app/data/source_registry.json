@@ -1,0 +1,102 @@
+{
+    "sources": [
+        {
+            "url": "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html",
+            "topic": "F1",
+            "audience": "students",
+            "country_context": "global"
+        },
+        {
+            "url": "https://travel.state.gov/content/travel/en/us-visas/employment/temporary-worker-visas.html",
+            "topic": "H1B",
+            "audience": "professionals",
+            "country_context": "global"
+        },
+        {
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/wait-times.html",
+            "topic": "F1,H1B",
+            "audience": "students,professionals",
+            "country_context": "global"
+        },
+        {
+            "url": "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations",
+            "topic": "H1B",
+            "audience": "professionals",
+            "country_context": "global"
+        },
+        {
+            "url": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/h-1b-electronic-registration-process",
+            "topic": "H1B",
+            "audience": "professionals",
+            "country_context": "global"
+        },
+        {
+            "url": "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment",
+            "topic": "F1",
+            "audience": "students",
+            "country_context": "global"
+        },
+        {
+            "url": "https://www.ice.gov/sevis/students",
+            "topic": "F1",
+            "audience": "students",
+            "country_context": "global"
+        },
+        {
+            "url": "https://www.ice.gov/sevis/practical-training",
+            "topic": "F1",
+            "audience": "students",
+            "country_context": "global"
+        },
+        {
+            "url": "https://np.usembassy.gov/visas/",
+            "topic": "F1,H1B",
+            "audience": "students,professionals",
+            "country_context": "Nepal"
+        }
+    ],
+    "allowed_domains": [
+        "travel.state.gov",
+        "www.uscis.gov",
+        "uscis.gov",
+        "www.ice.gov",
+        "ice.gov",
+        "np.usembassy.gov"
+    ],
+    "relevant_keywords": [
+        "student",
+        "f-1",
+        "f1",
+        "h-1b",
+        "h1b",
+        "sevis",
+        "opt",
+        "cpt",
+        "petition",
+        "consular",
+        "interview",
+        "appointment"
+    ],
+    "exclude_url_keywords": [
+        "adoption",
+        "tourism",
+        "business",
+        "immigrate",
+        "visa-waiver",
+        "exchange",
+        "visas-news-archive",
+        "/contact",
+        "/outreach",
+        "/whats-new"
+    ],
+    "follow_url_prefixes": [
+        "https://travel.state.gov/content/travel/en/us-visas/study",
+        "https://travel.state.gov/content/travel/en/us-visas/employment",
+        "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources",
+        "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations",
+        "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations",
+        "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors",
+        "https://www.ice.gov/sevis",
+        "https://np.usembassy.gov/visas"
+    ]
+}

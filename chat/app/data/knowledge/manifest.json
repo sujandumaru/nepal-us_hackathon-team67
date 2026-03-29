@@ -1,0 +1,192 @@
+{
+  "generated_at_utc": "2026-03-28T20:53:05.891247+00:00",
+  "saved_count": 23,
+  "failure_count": 0,
+  "saved": [
+    {
+      "url": "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html",
+      "path": "app/data/knowledge/travel_state_gov_content_travel_en_us_visas_study_student_visa_html.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://travel.state.gov/content/travel/en/us-visas/employment/temporary-worker-visas.html",
+      "path": "app/data/knowledge/travel_state_gov_content_travel_en_us_visas_employment_temporary_worker_visas_html.md",
+      "topic": "H1B",
+      "audience": "professionals",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/wait-times.html",
+      "path": "app/data/knowledge/travel_state_gov_content_travel_en_us_visas_visa_information_resources_wait_times_html.md",
+      "topic": "F1,H1B",
+      "audience": "students,professionals",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations",
+      "path": "app/data/knowledge/www_uscis_gov_working_in_the_united_states_h_1b_specialty_occupations.md",
+      "topic": "H1B",
+      "audience": "professionals",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/h-1b-electronic-registration-process",
+      "path": "app/data/knowledge/www_uscis_gov_working_in_the_united_states_temporary_workers_h_1b_specialty_occupations_h_1b_electronic_registration_process.md",
+      "topic": "H1B",
+      "audience": "professionals",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/students",
+      "path": "app/data/knowledge/www_ice_gov_sevis_students.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/practical-training",
+      "path": "app/data/knowledge/www_ice_gov_sevis_practical_training.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://np.usembassy.gov/visas/",
+      "path": "app/data/knowledge/np_usembassy_gov_visas.md",
+      "topic": "F1,H1B",
+      "audience": "students,professionals",
+      "country_context": "Nepal",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/overview",
+      "path": "app/data/knowledge/www_ice_gov_sevis_overview.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis",
+      "path": "app/data/knowledge/www_ice_gov_sevis.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://travel.state.gov/content/travel/en/us-visas/study/student-visa/foreign-students-in-public-schools.html",
+      "path": "app/data/knowledge/travel_state_gov_content_travel_en_us_visas_study_student_visa_foreign_students_in_public_schools_html.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/h-1b-cap-season",
+      "path": "app/data/knowledge/www_uscis_gov_working_in_the_united_states_temporary_workers_h_1b_specialty_occupations_h_1b_cap_season.md",
+      "topic": "H1B",
+      "audience": "professionals",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/h-1b-electronic-registration-frequently-asked-questions",
+      "path": "app/data/knowledge/www_uscis_gov_working_in_the_united_states_temporary_workers_h_1b_specialty_occupations_h_1b_electronic_registration_frequently_asked_questions.md",
+      "topic": "H1B",
+      "audience": "professionals",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/extension-of-post-completion-optional-practical-training-opt-and-f-1-status-for-eligible-students",
+      "path": "app/data/knowledge/www_uscis_gov_working_in_the_united_states_temporary_workers_h_1b_specialty_occupations_extension_of_post_completion_optional_practical_training_opt_and_f_1_status_for_eligible_stu.md",
+      "topic": "H1B",
+      "audience": "professionals",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/employment-authorization-for-certain-h-4-dependent-spouses",
+      "path": "app/data/knowledge/www_uscis_gov_working_in_the_united_states_temporary_workers_h_1b_specialty_occupations_employment_authorization_for_certain_h_4_dependent_spouses.md",
+      "topic": "H1B",
+      "audience": "professionals",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/i901",
+      "path": "app/data/knowledge/www_ice_gov_sevis_i901.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/i901/wu-instructions",
+      "path": "app/data/knowledge/www_ice_gov_sevis_i901_wu_instructions.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/i901/faq",
+      "path": "app/data/knowledge/www_ice_gov_sevis_i901_faq.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/employment",
+      "path": "app/data/knowledge/www_ice_gov_sevis_employment.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/schools",
+      "path": "app/data/knowledge/www_ice_gov_sevis_schools.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/operating-instructions",
+      "path": "app/data/knowledge/www_ice_gov_sevis_operating_instructions.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/f1-transfers",
+      "path": "app/data/knowledge/www_ice_gov_sevis_f1_transfers.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    },
+    {
+      "url": "https://www.ice.gov/sevis/school-alerts",
+      "path": "app/data/knowledge/www_ice_gov_sevis_school_alerts.md",
+      "topic": "F1",
+      "audience": "students",
+      "country_context": "global",
+      "content_type": "html"
+    }
+  ],
+  "failures": []
+}

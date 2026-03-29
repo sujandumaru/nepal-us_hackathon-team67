@@ -1,0 +1,6 @@
+{
+  "knowledge_fingerprint": "ba99ed6d679fd0f7d34ab305788dffff81ecf4400a101633d96cb3efd46bd241",
+  "use_local_embeddings": true,
+  "local_embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "gemini_embedding_model": "gemini-embedding-001"
+}

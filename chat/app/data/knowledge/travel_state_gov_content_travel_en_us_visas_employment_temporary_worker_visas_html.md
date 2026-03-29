@@ -1,0 +1,408 @@
+---
+source_url: "https://travel.state.gov/content/travel/en/us-visas/employment/temporary-worker-visas.html"
+source_domain: "travel.state.gov"
+topic: "H1B"
+audience: "professionals"
+country_context: "global"
+content_type: "html"
+last_fetched_utc: "2026-03-28T20:52:46.974261+00:00"
+---
+
+Worldwide Caution:
+The Department of State advises Americans worldwide, and especially in the Middle East, to exercise increased caution.
+Americans in the Middle East :
+For consular information or assistance, call the Department of State’s 24/7 Task Force at +1-202-501-4444 (from abroad) and 1-888-407-4747 (from the U.S. and Canada). View more.
+Skip to main content
+Home
+|
+Travel Advisories
+|
+Newsroom
+|
+About Us
+|
+Contact Us
+|
+Careers
+|
+MyTravelGov
+|
+Find U.S. Embassies & Consulates
+Travel.State.Gov
+Travel.State.Gov
+Congressional Liaison
+Special Issuance Agency
+U.S. Passports
+International Travel
+U.S. Visas
+Intercountry Adoption
+International Parental Child Abduction
+Records and Authentications
+Popular Links
+Home
+Travel Advisories
+Newsroom
+About Us
+Contact Us
+Careers
+MyTravelGov
+Find U.S. Embassies & Consulates
+Stay Connected
+Legal Resources
+Legal Information
+Info for U.S. Law Enforcement
+Travel.State.Gov
+>
+U.S. Visas
+>
+Employment
+>
+Temporary Worker Visas
+Congressional Liaison
+Special Issuance Agency
+Legal Resources
+U.S. Passports
+International Travel
+U.S. Visas
+Intercountry Adoption
+International Parental Child Abduction
+Replace or Certify Documents
+U.S. Visas
+English
+Tourism & Visit
+Business
+Employment
+Study & Exchange
+Immigrate
+Other Visa Categories
+U.S. Visa: Reciprocity and Civil Documents by Country
+Employment
+Travel.State.Gov
+>
+U.S. Visas
+>
+Employment
+>
+Temporary Worker Visas
+Share this page:
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+K
+L
+M
+N
+O
+P
+Q
+R
+S
+T
+U
+V
+W
+X
+Y
+Z
+All
+Filter Countries
+Temporary Worker Visas
+Visas for Members of the Foreign Media, Press, and Radio
+Treaty Trader & Treaty Investor and Australians in Specialty Occupations
+Visas for Canadian and Mexican USMCA Professional Workers
+Temporary Worker Visas
+Overview
+A citizen of a foreign country who wishes to work in the United States must first get the right visa.  If the employment is for a fixed period, the applicant can apply for a temporary employment visa.  There are 11 temporary worker visa categories.  Most applicants for temporary worker visas must have an approved petition.  The prospective employer must file the petition on behalf of the applicant.  U.S. Citizenship and Immigration Services (USCIS) reviews the petition.
+Temporary worker visa categories
+Visa category
+General description – About an individual in this category:
+H-1B:
+Person in Specialty Occupation
+For applicants working in a specialty occupation. Applicants must have at least a bachelor’s degree, or equivalent experience in the specialty occupation. Includes fashion models, physicians, and DOD project participants.
+H-1B1:
+Free Trade Agreement (FTA) Professional
+-
+Chile
+,
+Singapore
+For applicants from Chile or Singapore working in a specialty occupation. Applicants must have at least a bachelor’s degree, or equivalent experience in the field of specialization. (Note: This is not a petition-based visa. For application procedures, please refer to the website for the
+U.S. Embassy in Chile
+or the
+U.S. Embassy in Singapore
+.)
+H-2A:
+Temporary Agricultural Worker
+For applicants performing temporary  or seasonal agricultural work. Only citizens or nationals of designated countries are eligible for this visa.  There are limited exceptions.
+H-2B:
+Temporary Non-agricultural Worker
+For applicants performing temporary or seasonal non- agricultural work. Only citizens or nationals of designated countries are eligible for this visa.  There are limited exceptions.
+H-3:
+Trainee or Special Education visitor
+For applicants receiving training, other than graduate medical or academic training, in any field that is not available in their home country.  Applicants may also participate in practical training programs in the education of children with mental, physical, or emotional disabilities.
+L:
+Intracompany Transferee
+For applicants working in a managerial or executive capacity; or  applicants working in a position requiring specialized knowledge.  The petitioner must be a branch, parent, affiliate, or subsidiary of the applicant’s current employer.  Applicants must have worked for same employer abroad for 1 year within the three preceding years.
+O:
+Individual with Extraordinary Ability or Achievement
+For applicants with an extraordinary ability or achievement in the field of science, art, education, business, or athletics.  Also for applicants who are internationally recognized in the motion picture and television fields.  This category includes persons assisting the above individual.
+P-1:
+Individual or Team Athlete, or Member of an Entertainment Group
+For applicants who are recognized athletes or members of an entertainment/sports group.  They must perform at a specific athletic competition or entertainment performance.  Includes persons providing essential services in support of the above individual.
+P-2:
+Artist or Entertainer (Individual or Group)
+For applicants performing individually or in a group.  They must be part of a reciprocal exchange program between an organization in the United States and an organization in another country. Includes artists providing essential services in support of the above individual.
+P-3:
+Artist or Entertainer (Individual or Group)
+For applicants performing, teaching, or coaching.  They must be part of a program that is unique.  The program can also be a traditional ethnic, folk, cultural, musical, theatrical, or artistic performance or presentation. Includes persons providing essential services in support of the above individual.
+Q-1:
+Participant in an International Cultural Exchange Program
+For applicants participating in an international cultural exchange program.  The program can be for cultural labor and training, or to share the history, culture, and traditions of the applicant’s home country.
+Labor Certification
+Certain visa categories need an approved labor certification. First, the prospective employer must apply for the labor certification with the
+Department of Labor
+.  Then, the prospective employer can file the Petition for a Nonimmigrant Worker, Form I-129, with USCIS.  Please refer to the
+Instructions for Form I-129
+on the USCIS website to confirm if you need  the labor certification.
+Petition Approval
+Some temporary worker categories are limited in the total number of petitions which can be approved on a yearly basis. Before an applicant can apply for a temporary worker visa, USCIS must first approve the
+Petition for a Nonimmigrant Worker, Form I-129
+.    For more information about the petition process, see
+Working in the U.S.
+and
+Temporary (Nonimmigrant) Workers
+on the USCIS website.  Once USCIS approves the petition, it will send the prospective employer a Notice of Action, Form I-797.
+Important Notice: Same-sex Marriage
+Effective immediately, U.S. Embassies and Consulates will adjudicate visa applications that are based on a same-sex marriage in the same way that we adjudicate applications for opposite sex spouses. Please reference the specific guidance on the visa category for which you are applying for more details on documentation required for derivative spouses. For further information, please see our
+FAQ’s
+.
+How to Apply
+You may apply for a visa when USCIS has approved your petition. There are several steps in the visa application process. The order of these steps and how you complete them may vary at the U.S. embassy or consulate where you apply. Please visit the
+embassy or consulate website
+for instructions on how to apply.
+Complete The Online Visa ApplicationComplete The Online Visa Application
+Online Nonimmigrant Visa Application, Form
+DS-160
+–
+Learn more
+about completing the
+DS-160
+. You must: 1) complete the online visa application and 2) print the application form confirmation page to bring to your interview.
+Photo
+–You will upload your photo while completing the online Form DS-160. Your photo must be in the format explained in the
+Photograph Requirements
+.
+Schedule an Interview
+Interviews are generally required for visa applicants with certain limited exceptions. Consular officers may require an interview of any visa applicant.
+You must schedule an appointment for your visa interview at any
+U.S. Embassy or Consulate
+where you live.  However, it may be difficult to qualify for a visa outside of your place of permanent residence.
+Wait times for interview appointments vary by location, season, and visa category.  You should apply for your visa early.  Review the interview wait time for the location where you will apply:
+You will need to provide the receipt number to schedule an interview.  The receipt number is printed on your approved Petition for a Nonimmigrant Worker, Form I-129, or Notice of Action, Form I-797.
+Prepare for your Interview
+Fees - Pay the non-refundable visa application fee
+, if you are required to pay it before your interview. When your visa is approved, you may also pay a visa issuance fee, if applicable to your nationality. Fee information is provided below:
+$205
+Select your nationality to see Issuance Fee
+All Fees
+Reciprocity Fees
+Nonimmigrant visa applicants from certain countries*/areas of authority may be required to pay a visa issuance fee after their application is approved. These fees are based on the principle of reciprocity:  when a foreign government imposes fees on U.S. citizens for certain types of visas, the United States will impose a reciprocal fee on citizens of that country*/area of authority for similar types of visas.
+Check the
+Reciprocity Fees
+Fee payment information is available on the website of the
+embassy or consulate
+where you will apply.
+L visa applicants included in a L blanket petition
+: must also pay the Fraud Prevention and Detection fee and may need to pay the Border Security Act fee. Select
+All Fees
+to learn more.
+Gather Required Documentation
+Gather and prepare the following required documents before your visa interview:
+Passport
+valid for at least six months beyond your period of stay in the United States (unless exempt by
+country-specific agreements
+).  Each person included in a single passport needs a separate visa application.
+Nonimmigrant Visa Application,
+Form DS-160
+confirmation page
+.
+Application fee payment receipt,
+if you are required to pay before your interview.
+Photo
+– You will upload your photo while completing the online Form DS-160. If the
+photo upload fails,
+you must bring one printed photo in the format explained in the
+Photograph Requirements
+.
+Petition Receipt Number
+as it appears on your Petition for a Nonimmigrant Worker, Form I-129, or Notice of Action, Form I-797.
+L Visa Applicants
+included in an L blanket petition, must bring Form I-129S to the interview.
+Legal Rights and Protections
+H-1B, H-2A, and H-2B visa applicants should read the
+Legal Rights and Protections
+pamphlet before applying for a visa.  The pamphlet includes information on your rights in the United States and protection available to you.
+Additional Documentation May Be Required
+Review the instructions on how to apply for a visa on the website of the
+embassy or consulate
+where you will apply. Additional documents may be requested to establish if you are qualified.
+Most visa applicants, except H-1B and L, need to show their intent to return to their home country after their temporary stay in the United States. They can do so by showing proof of compelling ties to the home country, which may include:
+A residence abroad which you do not intend to abandon
+Your family relationships
+Your economic situation
+Your long term plans
+Attend your Visa Interview
+During the visa interview, a consular officer will determine if you are eligible for the visa.  The consular officer will also determine if the visa category is appropriate for your purpose of travel. You will need to establish that you meet the requirements under U.S. law to receive the category of visa for which you are applying.
+Ink-free, digital fingerprint scans will be taken as part of your application process. They are usually taken during your interview, but this varies based on location.
+After your visa interview, your application may need further
+administrative processing
+. A consular officer will inform you if further processing is necessary for your application.
+Depending on your nationality, you may need to pay a visa issuance fee.  You must pay this fee when the visa is approved.  The embassy will explain how your passport with visa will be returned to you.  Review the
+visa processing time
+, to learn how soon your passport with visa will generally be ready for pick-up or delivery by the courier.
+Entering the United States
+A visa allows a foreign citizen to travel to a U.S. port-of-entry (generally an airport).  A visa also allows you to request permission to enter the United States.  A visa does not guarantee entry into the United States.  U.S. Customs and Border Protection (CBP) officials at the port-of-entry have authority to permit or deny admission to the United States.  When admitted, you may get an admission stamp or  Form I-94, Arrival/Departure Record. Review the CBP website to learn more about entry requirements and customs restrictions.
+Extending Your Stay
+You must leave the United States on or before the date indicated on your admission stamp or Form I-94.  You can request to extend your stay by contacting USCIS.  Visit USCIS's
+Extend Your Stay
+website for more information.
+Failure to leave the United States on time will result in you being
+out of status
+. Under U.S. law, visas of travelers who are out of status are automatically voided (
+Section 222(g) of the Immigration and Nationality Act
+). If you had a multiple-entry visa and it was voided due to you being out of status, it will not be valid for future entries into the United States.
+Failure to leave the United States on time may also result in you being ineligible for visas you may apply for in the future. Review
+Visa Denials
+and
+Ineligibilities and Waivers: Laws
+to learn more.
+Change of Status
+While in the United States, you may be able to request a change to another nonimmigrant category.  See
+Change My Nonimmigrant Status
+on the USCIS website to learn more.
+Requesting a change of status does not require that you apply for a new visa, as long as you remain in status. If you cannot remain in status while USCIS processes your change of status request, you must apply for a visa at a U.S. embassy or consulate.
+Additional Information
+The approval of a petition does not guarantee that you will get a visa. Do not make final travel plans or buy tickets until you have a visa.
+Spouse and Children –
+Your spouse and unmarried, minor children may also apply for the same visa category as you to accompany or join you.  The only exception is for Cultural Exchange Visitor Q-1 visa applicants.  You must be able to show that you will be able to financially support your family in the United States.
+For more information, visit USCIS’s
+Temporary Workers
+information and
+Employment Authorization
+website.
+Unless canceled or revoked, a visa is valid until its expiration date.  Therefore, a valid U.S. visa in an expired passport is still valid. If you have a valid visa in your expired passport, do not remove it from your expired passport. You may use your valid visa in your expired passport along with a new valid passport for travel and admission to the United States.
+Visa Denial and Ineligibility
+Review
+Visa Denials
+for detailed information about visa ineligibilities, denials and waivers.
+Visa Renewal
+The same visa application process applies for first-time applicants and renewals. Please review
+How to Apply
+for more information.  Some applicants may be eligible for interview waiver.  Interview waiver allows eligible individuals to renew their visa without an in-person interview. To determine if you are eligible for interview waiver, please review the instructions on the website of the
+U.S. Embassy or Consulate
+where you will apply.
+I was refused a visa under section 214(b). May I reapply?
+Yes, if you feel circumstances have changed regarding your application. Review
+Visa Denials
+to learn more.
+Misrepresentation or Fraud
+Attempting to obtain a visa by the willful misrepresentation of a material fact, or fraud, may result in the permanent refusal of a visa or denial of entry into the United States.
+Review
+Ineligibilities and Waivers: Laws
+.
+Citizen of Canada and Bermuda
+Citizens of Canada and Bermuda do not need visas to enter the United States as temporary workers.  These applicants do need a temporary worker petition approved by USCIS. For more information see the
+U.S. Embassy Ottawa website
+, the
+U.S. Consulate Hamilton website
+and the
+CBP website
+.
+Additional resources for Canadian temporary workers to the United States can be found on the
+U.S. Embassy Ottawa website
+in Canada.
+Further Questions
+Case-Specific Questions
+- Contact the U.S. Embassy or Consulate handling your visa application for status information. Select
+U.S. Embassy or Consulate
+for contact information.
+General Questions
+- review
+Contact Us
+.
+More Information
+A-Z Index
+Legal Rights & Protections
+Lost/Stolen Travel Documents
+Denials
+Temporary Workers-USCIS
+Fraud Warning
+Border Security/Safety
+Visa Expiration Date
+Automatic Revalidation
+Visa Applicants - State Sponsors of Terrorism
+Find a U.S. Embassy or Consulate
+Customer Service Statement
+FAQs: About Visas - The Basics
+FAQs: DS-160
+Permanent Employment:
+Learn About Immigration
+Temporary Worker Visas
+Visas for Members of the Foreign Media, Press, and Radio
+Treaty Trader & Treaty Investor and Australians in Specialty Occupations
+Visas for Canadian and Mexican USMCA Professional Workers
+×
+External Link
+You are about to leave travel.state.gov for an external website that is not maintained by the U.S. Department of State.
+Links to external websites are provided as a convenience and should not be construed as an endorsement by the U.S. Department of State of the views or products contained therein. If you wish to remain on travel.state.gov, click the "cancel" message.
+You are about to visit:
+Cancel
+GO
+Travel.State.Gov
+Travel.State.Gov
+Congressional Liaison
+Special Issuance Agency
+U.S. Passports
+International Travel
+U.S. Visas
+Intercountry Adoption
+International Parental Child Abduction
+Records and Authentications
+Popular Links
+Home
+Travel Advisories
+Newsroom
+About Us
+Contact Us
+Careers
+MyTravelGov
+Find U.S. Embassies & Consulates
+Stay Connected
+Legal Resources
+Legal Information
+Info for U.S. Law Enforcement
+Privacy
+|
+Accessibility
+|
+Copyright & Disclaimer
+|
+FOIA
+|
+GSA
+|
+No FEAR Act Data
+|
+Office of the Inspector General
+|
+USA.gov
+|
+USA.gov/espanol
+|
+This site is managed by the U.S. Department of State. External links to other Internet sites and listings of private entities on this page are provided as a convenience and should not be construed as the U.S. Department of State or U.S. government endorsement of the entity, its views, the products or services it provides, or the accuracy of information contained therein. The order in which names appear has no significance, and the listings or links may be removed at any time at the discretion of the Department.
