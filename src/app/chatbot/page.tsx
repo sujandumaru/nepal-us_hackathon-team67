@@ -12,11 +12,6 @@ type Message = {
     content: string;
 };
 
-type StreamMeta = {
-    sources?: string[];
-    route_reason?: string;
-};
-
 // Suggested questions per visa type — used in GENERAL mode (no news context)
 const GENERAL_SUGGESTIONS = {
     F1: [
@@ -72,7 +67,6 @@ function ChatbotContent() {
     ]);
     const [input, setInput] = useState(prefill ?? "");
     const [loading, setLoading] = useState(false);
-    const [streamMeta, setStreamMeta] = useState<StreamMeta | null>(null);
     const bottomRef = useRef<HTMLDivElement>(null);
     const didAutoSend = useRef(false);
 
@@ -95,15 +89,13 @@ function ChatbotContent() {
 
         const userMessage: Message = { role: "user", content };
         const updated = [...messages, userMessage];
-        const pendingAssistant: Message = { role: "assistant", content: "" };
 
-        setMessages([...updated, pendingAssistant]);
+        setMessages(updated);
         setInput("");
         setLoading(true);
-        setStreamMeta(null);
 
         try {
-            const res = await fetch("/api/chat/stream", {
+            const res = await fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -114,60 +106,13 @@ function ChatbotContent() {
                 }),
             });
 
-            if (!res.ok || !res.body) {
-                throw new Error("Streaming response not available.");
+            if (!res.ok) {
+                throw new Error("Non-streaming response failed.");
             }
 
-            const reader = res.body.getReader();
-            const decoder = new TextDecoder();
-            let buffer = "";
-            let assistantText = "";
-
-            const updateAssistantMessage = (nextText: string) => {
-                setMessages((prev) => {
-                    const next = [...prev];
-                    next[next.length - 1] = { role: "assistant", content: nextText };
-                    return next;
-                });
-            };
-
-            while (true) {
-                const { value, done } = await reader.read();
-                if (done) break;
-
-                buffer += decoder.decode(value, { stream: true });
-                const chunks = buffer.split("\n\n");
-                buffer = chunks.pop() ?? "";
-
-                for (const chunk of chunks) {
-                    const lines = chunk.split("\n");
-                    const eventLine = lines.find((line) => line.startsWith("event: "));
-                    const dataLine = lines.find((line) => line.startsWith("data: "));
-                    if (!eventLine || !dataLine) continue;
-
-                    const eventName = eventLine.slice(7).trim();
-                    const payload = JSON.parse(dataLine.slice(6));
-
-                    if (eventName === "meta") {
-                        setStreamMeta(payload);
-                        continue;
-                    }
-
-                    if (eventName === "token") {
-                        assistantText += payload.text ?? "";
-                        updateAssistantMessage(assistantText);
-                        continue;
-                    }
-
-                    if (eventName === "error") {
-                        throw new Error(payload.message ?? "Stream error");
-                    }
-                }
-            }
-
-            if (!assistantText.trim()) {
-                updateAssistantMessage("Sorry, I couldn't generate a response.");
-            }
+            const data = await res.json();
+            const reply = (data?.reply ?? "").trim() || "Sorry, I couldn't generate a response.";
+            setMessages([...updated, { role: "assistant", content: reply }]);
         } catch {
             setMessages([
                 ...updated,
