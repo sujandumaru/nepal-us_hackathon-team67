@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Message = {
     role: "user" | "assistant";
     content: string;
@@ -20,7 +22,7 @@ export default function MessageBubble({ message }: { message: Message }) {
                         border: isUser ? "none" : "1px solid var(--glass-border)",
                     }}
                 >
-                    {isUser ? "👤" : "🕊️"}
+                    {isUser ? "👤" : <Image src="/logo.png" alt="ImmiCalm" width={18} height={18} className="rounded" />}
                 </div>
 
                 {/* Bubble */}

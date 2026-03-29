@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import Image from "next/image";
 import { useUser } from "@/lib/userContext";
 import MessageBubble from "@/components/chatbot/MessageBubble";
 import newsData from "@/data/news.json";
@@ -139,7 +140,10 @@ function ChatbotContent() {
                     </button>
                     <div className="flex-1 min-w-0">
                         <h1 className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
-                            ImmiCalm Assistant 🕊️
+                            <span className="inline-flex items-center gap-1.5">
+                                <Image src="/logo.png" alt="" width={18} height={18} className="rounded" />
+                                ImmiCalm Assistant
+                            </span>
                         </h1>
                         <p className="text-xs truncate" style={{ color: "var(--text-muted)" }}>
                             {isGeneralMode
@@ -229,7 +233,7 @@ function ChatbotContent() {
                                     border: "1px solid var(--glass-border)",
                                 }}
                             >
-                                🕊️
+                                <Image src="/logo.png" alt="ImmiCalm" width={20} height={20} className="rounded" />
                             </div>
                             <div
                                 className="px-4 py-3 rounded-2xl"

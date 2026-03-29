@@ -248,7 +248,7 @@ export default function DashboardPage() {
 
     const [moodSelected, setMoodSelected] = useState<number | null>(profile.mood);
     const [moodSubmitted, setMoodSubmitted] = useState(!!profile.mood);
-    const showAdditionalCard = (profile.mood ?? 5) <= 3;
+    const showAdditionalCard = moodSubmitted && (moodSelected ?? 5) <= 3;
 
     // F1 timeline inputs
     const [f1GradStatus, setF1GradStatus] = useState<"graduated" | "not_graduated" | null>(
@@ -521,12 +521,12 @@ export default function DashboardPage() {
                             border: "1px solid hsla(270, 50%, 50%, 0.15)",
                         }}
                     >
-                        {(profile.mood ?? 5) === 3 && (
+                        {(moodSelected ?? 5) === 3 && (
                             <p className="text-sm font-medium mb-1" style={{ color: "hsl(270, 50%, 72%)" }}>
                                 You&apos;re not alone in this journey. Join these communities to stay up to date and connect with peers.
                             </p>
                         )}
-                        {(profile.mood ?? 5) <= 2 && (
+                        {(moodSelected ?? 5) <= 2 && (
                             <>
                                 <p className="text-sm font-medium mb-1" style={{ color: "hsl(270, 50%, 72%)" }}>
                                     Would you like to talk with someone?
@@ -549,12 +549,11 @@ export default function DashboardPage() {
                                 href="https://www.reddit.com/r/immigration"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="glass-btn text-center text-xs py-2 px-3.5 flex-1"
-                                style={{ color: "var(--text-secondary)" }}
+                                className="btn-primary text-center text-xs py-2 px-3.5 flex-1"
                             >
                                 r/Immigration →
                             </a>
-                            {(profile.mood ?? 5) <= 2 && (
+                            {(moodSelected ?? 5) <= 2 && (
                                 <a
                                     href="https://www.mentorcruise.com/filter/immigration/"
                                     target="_blank"
@@ -567,7 +566,7 @@ export default function DashboardPage() {
                                     Find a mentor →
                                 </a>
                             )}
-                            {(profile.mood ?? 5) <= 1 && (
+                            {(moodSelected ?? 5) <= 1 && (
                                 <a
                                     href={profile.state
                                         ? `https://www.bestlawyers.com/united-states/${profile.state.toLowerCase().replace(" ", "-")}`

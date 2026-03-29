@@ -48,7 +48,7 @@
 }
 
 /* ─── Base ──────────────────────────────────────────────────────────────────── */
-* {
+button, a, input, select, textarea, .glass-card, .glass-card-sm, .glass-btn, .chip {
   transition-property: color, background-color, border-color, box-shadow, opacity, transform;
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -310,6 +310,12 @@ input::placeholder, textarea::placeholder {
   color: var(--text-muted);
 }
 
+/* Dark dropdown options */
+option {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
 /* ─── Tag / Pill Chip ───────────────────────────────────────────────────────── */
 .chip {
   display: inline-flex;
@@ -342,7 +348,7 @@ a {
   transition: color 0.2s ease;
 }
 
-a:hover {
+a:not(.btn-primary):not(.glass-btn):hover {
   color: var(--accent-calm);
 }
 

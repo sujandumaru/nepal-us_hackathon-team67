@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { useUser } from "@/lib/userContext";
 
 export default function AskAIButton() {
@@ -58,7 +59,7 @@ export default function AskAIButton() {
                         }}
                     >
                         <div className="flex items-center gap-2.5">
-                            <span className="text-lg">🕊️</span>
+                            <Image src="/logo.png" alt="ImmiCalm" width={24} height={24} className="rounded" />
                             <div>
                                 <p className="text-white text-sm font-semibold">ImmiCalm Assistant</p>
                                 <p className="text-white/60 text-xs">
@@ -128,7 +129,7 @@ export default function AskAIButton() {
             >
                 {open
                     ? <span className="text-xl" style={{ color: "var(--text-secondary)" }}>×</span>
-                    : <span className="text-2xl">🕊️</span>
+                    : <Image src="/logo.png" alt="Ask AI" width={28} height={28} className="rounded-lg" />
                 }
             </button>
         </>
