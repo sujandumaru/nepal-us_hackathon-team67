@@ -49,7 +49,7 @@ The result: talented individuals who should be focused on their studies, careers
 
 ![Splash Screen](docs/screenshots/splash.png)
 
-The app opens with a cinematic splash experience: the dove-shield logo scales in with a breathing glow ring, followed by the name "ImmiCalm" and the motto *"Your visa is a bridge, not a burden."*
+The app opens with a cinematic splash experience: the dove-shield logo scales in with a breathing glow ring, followed by the name "ImmiCalm" and the motto _"Your visa is a bridge, not a burden."_
 
 </details>
 
@@ -70,6 +70,7 @@ Dark sanctuary-themed onboarding with glassmorphism selection cards. Users pick 
 ![Dashboard Top](docs/screenshots/dashboard.png)
 
 The dashboard features:
+
 - **Breathing status orb** that color-shifts by alert level (green → amber → red)
 - **Stat cards** showing active alerts, next deadline, and visa status
 - **Mood check-in** with emoji selection and adaptive messaging
@@ -88,6 +89,7 @@ Scrolling down reveals the F-1 timeline tracker with color-coded countdown badge
 ![News Feed](docs/screenshots/news.png)
 
 Glass card news feed with:
+
 - Left-border severity indicators (green/amber/red)
 - "SAFE", "WATCH", "ACTION" status badges
 - Source attribution and "Ask AI about this" for each card
@@ -102,6 +104,7 @@ Glass card news feed with:
 ![Myth Buster](docs/screenshots/mythbuster.png)
 
 Tracks scary viral immigration claims and debunks them with official sources:
+
 - Stat cards showing myths debunked, misleading claims, and total checked
 - Each myth card shows the viral headline, verdict, and what's actually true
 - Links to official government source materials
@@ -173,11 +176,11 @@ User Profile (React Context)
 
 ### Severity System
 
-| Level | Color | Meaning | User Action |
-|-------|-------|---------|-------------|
-| 🟢 **Green** | `hsl(152, 50%, 48%)` | Safe — no action needed | None |
-| 🟡 **Yellow** | `hsl(38, 80%, 55%)` | Watch — worth reviewing | Read & monitor |
-| 🔴 **Red** | `hsl(0, 60%, 55%)` | Action needed — may affect your status | Review immediately |
+| Level         | Color                | Meaning                                | User Action        |
+| ------------- | -------------------- | -------------------------------------- | ------------------ |
+| 🟢 **Green**  | `hsl(152, 50%, 48%)` | Safe — no action needed                | None               |
+| 🟡 **Yellow** | `hsl(38, 80%, 55%)`  | Watch — worth reviewing                | Read & monitor     |
+| 🔴 **Red**    | `hsl(0, 60%, 55%)`   | Action needed — may affect your status | Review immediately |
 
 ---
 
@@ -185,26 +188,26 @@ User Profile (React Context)
 
 The UI follows a **"calm-first" design philosophy** — every visual decision is intentional to reduce anxiety:
 
-| Element | Choice | Rationale |
-|---------|--------|-----------|
-| **Base color** | Dark navy `hsl(222, 28%, 7%)` | Dark, warm tones reduce cortisol — especially for late-night browsing when anxiety peaks |
-| **Primary accent** | Teal `hsl(168, 55%, 42%)` | Sits between blue (trust) and green (safety) — the anxiety-reduction sweet spot |
-| **Glass effects** | `backdrop-blur(20px)` | Creates depth and premium feel without visual noise |
-| **Animations** | `cubic-bezier(0.16, 1, 0.3, 1)` | Premium ease-out curves — never jarring or sudden |
-| **Typography** | Inter (Google Fonts) | Clean, modern, highly readable at all sizes |
-| **Logo** | Dove inside shield | Peace + Protection — the core promise of the app |
+| Element            | Choice                          | Rationale                                                                                |
+| ------------------ | ------------------------------- | ---------------------------------------------------------------------------------------- |
+| **Base color**     | Dark navy `hsl(222, 28%, 7%)`   | Dark, warm tones reduce cortisol — especially for late-night browsing when anxiety peaks |
+| **Primary accent** | Teal `hsl(168, 55%, 42%)`       | Sits between blue (trust) and green (safety) — the anxiety-reduction sweet spot          |
+| **Glass effects**  | `backdrop-blur(20px)`           | Creates depth and premium feel without visual noise                                      |
+| **Animations**     | `cubic-bezier(0.16, 1, 0.3, 1)` | Premium ease-out curves — never jarring or sudden                                        |
+| **Typography**     | Inter (Google Fonts)            | Clean, modern, highly readable at all sizes                                              |
+| **Logo**           | Dove inside shield              | Peace + Protection — the core promise of the app                                         |
 
 ### Key Animations
 
-| Animation | Usage | Duration |
-|-----------|-------|----------|
-| `breathe` | Dashboard status orb | 4s infinite |
-| `breathe-ring` | Orb outer ring pulse | 4s infinite |
-| `pulse-dot` | Status indicators | 2s infinite |
-| `float-in` | Page section entrance | 0.5s staggered |
-| `slide-up` | Card entrance | 0.5s staggered |
-| `scale-in` | AI popup panel | 0.35s |
-| `wave-dot` | Chatbot loading dots | 1.2s |
+| Animation      | Usage                 | Duration       |
+| -------------- | --------------------- | -------------- |
+| `breathe`      | Dashboard status orb  | 4s infinite    |
+| `breathe-ring` | Orb outer ring pulse  | 4s infinite    |
+| `pulse-dot`    | Status indicators     | 2s infinite    |
+| `float-in`     | Page section entrance | 0.5s staggered |
+| `slide-up`     | Card entrance         | 0.5s staggered |
+| `scale-in`     | AI popup panel        | 0.35s          |
+| `wave-dot`     | Chatbot loading dots  | 1.2s           |
 
 ---
 
@@ -217,39 +220,94 @@ The UI follows a **"calm-first" design philosophy** — every visual decision is
 
 ### Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/your-org/nepal-us_hackathon-team67.git
-cd nepal-us_hackathon-team67
+## 1. Clone and enter project
 
-# Install dependencies
+```bash
+git clone <your-repo-url>
+cd nepal-us_hackathon-team67
+```
+
+## 2. Frontend setup (root)
+
+Install frontend dependencies:
+
+```bash
 npm install
 ```
 
-### Environment Setup
-
-Create a `.env.local` file for the chatbot API backend:
+Create frontend env file `.env.local` in the project root:
 
 ```env
 CHATBOT_API_BASE=http://127.0.0.1:8000
 ```
 
-> If the chatbot backend isn't running, all other features (news feed, dashboard, myth buster, mood check-in, F-1 timeline) work independently. The AI chat will show a friendly error message.
+## 3. Backend setup (`chat/`)
 
-### Run Development Server
+From project root:
+
+```bash
+cd chat
+python -m venv .venv
+. .venv/Scripts/activate
+pip install -r requirements.txt
+cp env.example .env
+```
+
+Edit `chat/.env` and add your keys/settings. At minimum:
+
+```env
+GEMINI_API_KEY=your_gemini_key
+GEMINI_MODEL=gemini-2.5-flash
+GEMINI_TEMPERATURE=0.1
+USE_LOCAL_EMBEDDINGS=true
+LOCAL_EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+TAVILY_API_KEY=optional_tavily_key
+```
+
+Notes:
+
+- `USE_LOCAL_EMBEDDINGS=true` avoids embedding API usage and uses local sentence-transformers.
+- First run may take longer while models/indexes initialize.
+
+Return to project root after setup:
+
+```bash
+cd ..
+```
+
+## 4. Run services separately (two terminals)
+
+Terminal 1: backend
+
+```bash
+cd chat
+bash script.sh
+```
+
+Terminal 2: frontend
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the splash screen → onboarding → dashboard.
+Open:
 
-### Production Build
+- Frontend: http://localhost:3000
+- Backend health: http://127.0.0.1:8000/api/health
+
+## 5. Run both services with one command
+
+Use the root helper script:
 
 ```bash
-npm run build
-npm start
+bash run-dev.sh
 ```
+
+What it does:
+
+- Starts backend from `chat/script.sh`
+- Starts frontend with `npm run dev`
+- Stops backend automatically when you stop the frontend process
 
 ---
 
@@ -258,18 +316,23 @@ npm start
 The chatbot operates in two modes:
 
 ### General Q&A Mode
+
 When no news article is selected, the chatbot answers general visa questions:
-- *"What should I know about maintaining F1 status?"*
-- *"Can I change employers on H1B?"*
-- *"How does OPT work and when should I apply?"*
+
+- _"What should I know about maintaining F1 status?"_
+- _"Can I change employers on H1B?"_
+- _"How does OPT work and when should I apply?"_
 
 ### Article-Specific Mode
+
 When triggered from a news card ("Ask AI about this"), the chatbot:
+
 1. Injects the full article context (title, summary, severity, affected visas)
 2. Forces article-first answering with conversation history
 3. Maintains user profile context (visa type, state)
 
 The Next.js API route at `/api/chat` acts as a proxy to the Python backend, building a structured prompt with:
+
 - Conversation mode flag (GENERAL_QA or ARTICLE_SPECIFIC)
 - User profile (visa type + state)
 - Article metadata + full text (if available, truncated to 16K chars)
@@ -288,22 +351,22 @@ ImmiCalm is **privacy-first by design**:
 - ✅ Data resets completely on page refresh
 - ✅ News data is static JSON — no API calls to external news services
 
-This was a conscious architectural decision: immigrants dealing with visa anxiety should never have to worry about *"what happens to my data?"*
+This was a conscious architectural decision: immigrants dealing with visa anxiety should never have to worry about _"what happens to my data?"_
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| **Framework** | Next.js 16 (App Router) |
-| **Language** | TypeScript |
-| **Styling** | Tailwind CSS 4 + custom CSS design system |
-| **Font** | Inter (via `next/font/google`) |
-| **State** | React Context API |
-| **AI Chat** | Next.js API route → Python backend proxy |
-| **Data** | Static JSON (news + myths) |
-| **Deployment** | Vercel-ready |
+| Layer          | Technology                                |
+| -------------- | ----------------------------------------- |
+| **Framework**  | Next.js 16 (App Router)                   |
+| **Language**   | TypeScript                                |
+| **Styling**    | Tailwind CSS 4 + custom CSS design system |
+| **Font**       | Inter (via `next/font/google`)            |
+| **State**      | React Context API                         |
+| **AI Chat**    | Next.js API route → Python backend proxy  |
+| **Data**       | Static JSON (news + myths)                |
+| **Deployment** | Vercel-ready                              |
 
 ---
 
