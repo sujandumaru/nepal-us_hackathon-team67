@@ -29,6 +29,8 @@ const GENERAL_SUGGESTIONS = {
 };
 
 // Suggested questions per visa type — used in NEWS-SPECIFIC mode
+
+// Suggested questions per visa type
 const NEWS_SUGGESTIONS = {
     F1: [
         "Does this affect my OPT?",
@@ -104,8 +106,13 @@ function ChatbotContent() {
                 }),
             });
 
+            if (!res.ok) {
+                throw new Error("Non-streaming response failed.");
+            }
+
             const data = await res.json();
-            setMessages([...updated, { role: "assistant", content: data.reply }]);
+            const reply = (data?.reply ?? "").trim() || "Sorry, I couldn't generate a response.";
+            setMessages([...updated, { role: "assistant", content: reply }]);
         } catch {
             setMessages([
                 ...updated,

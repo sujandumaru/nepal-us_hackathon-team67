@@ -20,7 +20,7 @@ export default function MessageBubble({ message }: { message: Message }) {
                 <div className={`px-4 py-3 rounded-2xl text-sm leading-relaxed ${isUser
                         ? "bg-blue-600 text-white rounded-br-sm"
                         : "bg-gray-800 text-gray-200 rounded-bl-sm"
-                    }`}>
+                    } whitespace-pre-wrap`}>
                     {message.content}
                 </div>
 
