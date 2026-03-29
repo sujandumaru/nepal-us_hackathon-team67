@@ -261,7 +261,7 @@ GEMINI_MODEL=gemini-2.5-flash
 GEMINI_TEMPERATURE=0.1
 USE_LOCAL_EMBEDDINGS=true
 LOCAL_EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
-TAVILY_API_KEY=optional_tavily_key
+TAVILY_API_KEY=tavily_api_key
 ```
 
 Notes:
